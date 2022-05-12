@@ -5,8 +5,8 @@
 
 2022/05/12 Marcelo
 1. Done / not done since last scrum:
-- wrote project proposal specifications (general idea how the site works)
-- watched tutorial about Stripe
+- wrote project proposal specifications (general idea how the site works) - done
+- watched tutorial about Stripe - done
 2. To do until next Scrum:
 - finish the proposal
 - setup the initial project (gitHub repo, Trello) with teammates
@@ -17,9 +17,9 @@
 
 2022/05/12 Ly
 1. Done / not done since last scrum:
-- created wireframe mockup
-- created database design (initial tables, attributes, data types and relationships)
-- watched tutorial (DB Cloud and Heroku) 
+- created wireframe mockup - done
+- created database design (initial tables, attributes, data types and relationships) - done
+- watched tutorial (DB Cloud and Heroku)  - done
 2. To do until next Scrum:
 - support finishing the proposal
 - assist writing the 10 stories in Trello

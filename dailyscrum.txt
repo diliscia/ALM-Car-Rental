@@ -70,5 +70,6 @@
 2. To do until next Scrum:
 - Create a RDS 
 - Test RDS connection throw java environment
+- watch torurials about Heroku 
 3. Need assistance / figure things out
 - 

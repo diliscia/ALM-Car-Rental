@@ -38,3 +38,37 @@
 3. Need assistance / figure things out
 - how to setup AWS S3 and RDS and Heroku DB Cloud
 - how to make payment using Stripe API
+
+*********** 2022-05-13  ************
+
+2022/05/13 Marcelo
+1. Done / not done since last scrum:
+- finish the proposal
+- setup the initial project (gitHub repo, Trello) with teammates
+- write the 10 stories in Trello
+- watch tutorials about AWS RDS and S3
+2. To do until next Scrum:
+- 
+3. Need assistance / figure things out
+-  
+
+2022/05/13 Ly
+1. Done / not done since last scrum:
+- support finishing the proposal
+- assist writing the 10 stories in Trello
+- watch tutorials about Stripe and others 
+2. To do until next Scrum:
+- 
+3. Need assistance / figure things out
+- 
+
+2022/05/13 Alireza
+1. Done / not done since last scrum:
+- check the final the proposal - Done
+- write some of the 10 stories in Trello - Done
+- watch tutorials about Stripe and AWS RDS - Done
+2. To do until next Scrum:
+- Create a RDS 
+- Test RDS connection throw java environment
+3. Need assistance / figure things out
+- 

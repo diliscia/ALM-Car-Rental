@@ -76,8 +76,7 @@
 - write some of the 10 stories in Trello - Done
 - watch tutorials about Stripe and AWS RDS - Done
 2. To do until next Scrum:
-- Create a RDS 
 - Test RDS connection throw java environment
-- watch tutorials about Heroku 
+- Create an hosting on Heroku 
 3. Need assistance / figure things out
-- is there another solution in place of S3+RDS+Heroku? for example on EC2
+- is there another solution in place of S3+RDS+Heroku? for example one EC2

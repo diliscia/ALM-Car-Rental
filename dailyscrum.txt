@@ -51,18 +51,24 @@
 - do tests with Stripe, RDS and S3
 - watch more tutorials, Heroku
 - create new project for Car Rental
+- create entities () and connect to MySQL
+- create AWS RDS
 3. Need assistance / figure things out
--  
+-  how to use AWS RDS and AWS S3 
 
 2022/05/13 Ly
 1. Done / not done since last scrum:
-- support finishing the proposal
-- assist writing the 10 stories in Trello
-- watch tutorials about Stripe and others 
+- supported finishing the proposal - Done
+- assisted writing the 10 stories in Trello - Done
+- watched tutorials about Stripe and others - Done
 2. To do until next Scrum:
-- 
+- assist setting up the project on Git
+- set up S3
+- create entities () and connect to MySQL
+- try to create some crud for testing
 3. Need assistance / figure things out
-- 
+- Test if entities are created successfully in MySQL
+-  how to use AWS RDS and AWS S3 
 
 2022/05/13 Alireza
 1. Done / not done since last scrum:

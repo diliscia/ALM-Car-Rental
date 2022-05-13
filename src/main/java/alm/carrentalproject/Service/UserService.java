@@ -26,7 +26,7 @@ public class UserService implements UserDetailsService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private final static String PW_ERROR = "Password must be at least 6 " +
-            "characters long and must contain at least one uppercase letter, one lower case letter, and one number. It must not be longer than 100 char.";
+            "characters long and must contain at least one uppercase letter, one lower case letter, and one number. It must not be longer than 100 characters.";
 
     @Transactional
     public String register(@Valid User user, BindingResult result) {

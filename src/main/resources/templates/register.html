@@ -29,6 +29,29 @@
     <label >Repeat password</label>
     <input type="password" th:field="*{passwordRepeat}"><br>
     <div class="red-text" th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}">error</div>
+
+    <label >First Name</label>
+    <input type="text" th:field="*{firstName}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">error</div>
+    <label >Last Name</label>
+    <input type="text" th:field="*{lastName}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">error</div>
+    <label >Phone</label>
+    <input type="text" th:field="*{phone}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error</div>
+    <label >Street</label>
+    <input type="text" th:field="*{street}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">error</div>
+    <label >City</label>
+    <input type="text" th:field="*{city}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">error</div>
+    <label >Province</label>
+    <input type="text" th:field="*{province}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('province')}" th:errors="*{province}">error</div>
+    <label >Postal Code</label>
+    <input type="text" th:field="*{postalCode}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">error</div>
+
     <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
   </form>
 </div>

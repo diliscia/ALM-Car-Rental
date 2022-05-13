@@ -1,5 +1,6 @@
 package alm.carrentalproject.Entity;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,7 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -45,6 +48,36 @@ public class User implements UserDetails {
     @Transient
     private String passwordRepeat;
 
+    @NotEmpty(message = "First name can not be empty!!")
+    @Column(nullable = false)
+    @Pattern(regexp = "^[a-zA-Z]{1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
+    private String firstName;
+
+    @NotEmpty(message = "Last name can not be empty!!")
+    @Column(nullable = false)
+    @Pattern(regexp = "^[a-zA-Z]{1,20}$", message = "Last name can only contains letters and must be between 1-20 characters.")
+    private String lastName;
+
+    @NotNull
+    @Size(max = 10, min = 10, message = "Phone number should be of 10 digits")
+    @Pattern(regexp = "[2-9][0-9]{9}", message = "Phone number is invalid!!")
+    private String phone;
+
+    @NotNull
+    @Pattern(regexp = "\\s*\\S+(?:\\s+\\S+){2}", message = "Street is invalid!!")
+    private String street;
+
+    @NotNull
+    @Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "City is invalid!!")
+    private String city;
+
+    @NotNull
+    @Pattern(regexp = "^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)*$", message = "Province must be in Canada and have 2 characters.")
+    private String province;
+
+    @NotNull
+    @Pattern(regexp = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$", message = "Postal Code is invalid!!")
+    private String postalCode;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -25,7 +25,7 @@
 - assist writing the 10 stories in Trello
 - watch tutorials about payment process on Stripe API, set up project on Heroku, set up AWS S3 and RDS
 3. Need assistance / figure things out
-- how to setup AWS S3 and RDS and Heroku DB Cloud
+- how to setup AWS S3 and RDS or Heroku DB Cloud
 
 2022/05/12 Alireza
 1. Done / not done since last scrum:

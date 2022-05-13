@@ -42,8 +42,8 @@
             <td th:text="${vehicle.status}"></td>
             <td th:text="${vehicle.category}"></td>
             <td>
-                <a th:href="@{/showUpdateForm(vehicleId=${vehicle.id})}" class="btn btn-info">Update</a>
-                <a th:href="@{/deleteVehicle(vehicleId=${vehicle.id})}" class="btn btn-danger ml-2">Delete</a>
+                <a th:href="@{/admin/showUpdateForm(vehicleId=${vehicle.id})}" class="btn btn-info">Update</a>
+                <a th:href="@{/admin/deleteVehicle(vehicleId=${vehicle.id})}" class="btn btn-danger ml-2">Delete</a>
             </td>
         </tr>
         </tbody>

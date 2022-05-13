@@ -64,7 +64,7 @@ public class VehicleControler {
 
     @GetMapping("/admin/deleteVehicle")
     public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
-        redirAttrs.addFlashAttribute("success", "Todo deleted successfully!!");
+        redirAttrs.addFlashAttribute("success", "Vehicle deleted successfully!!");
 //        model.addAttribute("success", "Vehicle deleted successfully!!");
         vehicleRepo.deleteById(vehicleId);
         return"redirect:/admin/vehicles";

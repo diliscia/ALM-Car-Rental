@@ -50,7 +50,7 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "First name can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^[a-zA-Z]{1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
+    @Pattern(regexp = "^(?![\\s.]+$)[a-zA-Z\\s.]{1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
     private String firstName;
 
     @NotEmpty(message = "Last name can not be empty!!")

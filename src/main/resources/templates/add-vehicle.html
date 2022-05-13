@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragment/header_auth :: head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Add Vehicle | ALM Car Rental </title>
+</head>
+
+<body class="grey lighten-4">
+<nav class="white z-depth-0" th:replace="fragment/header_anonymous :: header">
+</nav>
+<div class="container">
+    <h3 class="brand-text">Add Vehicle</h3>
+    <form th:action="@{/admin/vehicles}" th:object="${vehicle}" method="POST">
+        <label >Model Name</label>
+        <input type="text" th:field="*{modelName}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>
+        <label >VIN</label>
+        <input type="text" th:field="*{vin}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">error</div>
+        <label >Plate</label>
+        <input type="text" th:field="*{plate}"><br>
+        <div class="red-text" th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}">error</div>
+        <label >Model Year</label>
+        <input type="number" th:field="*{modelYear}"><br>
+        <div class="red-text" th:if="${#fields.hasErrors('modelYear')}" th:errors="*{modelYear}">error</div>
+        <label >Mileage</label>
+        <input type="number" th:field="*{mileage}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}">error</div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label><br>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{status}" value ="Available" name="flexRadioDefault" id="status1" checked >
+                <label class="form-check-label" for="status1">
+                    Available
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{status}" value = "Rented" name="flexRadioDefault" id="status2">
+                <label class="form-check-label" for="status2">
+                    Rented
+                </label>
+            </div>
+        </div>
+
+        <label >Capacity</label>
+        <input type="number" th:field="*{capacity}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">error</div>
+        <label >Cost per Day</label>
+        <input type="number" th:field="*{costPerDay}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('costPerDay')}" th:errors="*{costPerDay}">error</div>
+
+        <div class="mb-3">
+            <label class="form-label">Category</label><br>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{category}" value ="Economy" name="flexRadioDefault" id="category1" checked >
+                <label class="form-check-label" for="category1">
+                    Economy
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{status}" value = "Luxury" name="flexRadioDefault" id="category2">
+                <label class="form-check-label" for="category2">
+                    Luxury
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{category}" value ="Truck" name="flexRadioDefault" id="category3" >
+                <label class="form-check-label" for="category3">
+                    Truck
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" th:field="*{status}" value = "Van" name="flexRadioDefault" id="category4">
+                <label class="form-check-label" for="category4">
+                    Van
+                </label>
+            </div>
+        </div>
+        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
+    </form>
+    </hr>
+    <a th:href="@{/admin/vehicles}">Back to List of Vehicles</a>
+</div>
+</body>
+
+</html>

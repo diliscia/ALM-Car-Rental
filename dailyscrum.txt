@@ -23,7 +23,7 @@
 2. To do until next Scrum:
 - support finishing the proposal
 - assist writing the 10 stories in Trello
-- watch tutorials about Stripe and others
+- watch tutorials about Stripe, set up project on Heroku, set up AWS S3 and RDS
 3. Need assistance / figure things out
 - how to setup AWS S3 and RDS and Heroku DB Cloud
 

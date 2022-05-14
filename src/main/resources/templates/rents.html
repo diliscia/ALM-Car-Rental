@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Rents</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>List of Rents</h2>
+    <hr/>
+    <a th:href="@{/rent}" class="btn btn-primary mb-2">Make a new Rent</a>
+    <table class="table table-bordered table-striped" id="rent-table">
+        <thead>
+        <tr>
+            <th>pickup date</th>
+            <th>pickup time</th>
+            <th>drop date</th>
+            <th>drop time</th>
+            <th>status</th>
+            <th>username</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rent: ${rents}">
+            <td th:text="${rent.pickup_date}"></td>
+            <td th:text="${rent.pickup_time}"></td>
+            <td th:text="${rent.drop_date}"></td>
+            <td th:text="${rent.pickup_time}"></td>
+            <td th:text="${rent.status}"></td>
+            <td th:text="${rent.user.username}"></td>
+<!--            <td th:text="${rent.vehicle.modelName}"></td>-->
+            <td>
+                <a th:href="@{/admin/updateRent(rentId=${rent.id})}" class="btn btn-info">Update</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+<script>
+        $(document).ready(function() {
+            $("#employee-table").DataTable({
+                'aoColumnDef': [{
+                    'bSortable': false,
+                    'aTarget': [-1]
+                    }]
+            });
+        })
+    </script>
+</body>
+</html>

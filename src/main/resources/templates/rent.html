@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragment/header_auth :: head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Rent a Vehicle | ALM Car Rental </title>
+</head>
+
+<body class="grey lighten-4">
+<nav class="white z-depth-0" th:replace="fragment/header_anonymous :: header">
+</nav>
+<div class="container">
+    <h3 class="brand-text">Make a Rent</h3>
+    <form th:action="@{/saveRent}" th:object="${rent}" method="POST">
+        <label>Pick up Date</label>
+        <input type="date" th:field="*{pickup_date}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>
+        <label>Pick up Time</label>
+        <input type="time" th:field="*{pickup_time}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>
+        <label>Drop Date</label>
+        <input type="date" th:field="*{drop_date}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>
+        <label>Drop Time</label>
+        <input type="time" th:field="*{drop_time}" ><br>
+        <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
+        <label>Choose your Vehicle</label>
+
+        <div class="form-group blu-margin">
+            <select class="form-control" th:field="*{drop_time}"  id="vehicle_id">
+<!--                <option value="0">select your vehicle</option>-->
+                <option th:each="vehicle : ${vehicles}" th:value="${id}" th:text="${vehicle.modelName}"></option>
+            </select>
+        </div>
+
+        <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
+
+      <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
+    </form>
+    </hr>
+    <a th:href="@{/index}">Cancel the Operation</a>
+</div>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ package alm.carrentalproject.Controller;
 import alm.carrentalproject.Entity.Rent;
 import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Repository.RentRepository;
+import alm.carrentalproject.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +24,16 @@ public class RentController {
     @Autowired
     private RentRepository rentRepository;
 
+    @Autowired
+    private VehicleRepository vehicleRepository;
+
     @GetMapping({"/addRent"})
     public ModelAndView showRentPage(){
-        ModelAndView mav=new ModelAndView("rent");
+        ModelAndView mav=new ModelAndView("addRent");
         Rent newRent=new Rent();
         mav.addObject("rent",newRent);
 
-        List<Vehicle> vehicles=rentRepository.availableVehicles();
+        List<Vehicle> vehicles=vehicleRepository.findAll();//.availableVehicles();
         mav.addObject("vehicles", vehicles);
 
         return mav;

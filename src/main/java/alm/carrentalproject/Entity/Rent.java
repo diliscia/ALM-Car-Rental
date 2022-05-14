@@ -2,9 +2,11 @@ package alm.carrentalproject.Entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -22,8 +24,8 @@ public class Rent {
 
     @NotEmpty(message = "Please choose a pickup date")
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDate pickup_date;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date pickup_date;
 
     @NotEmpty(message = "Please choose a pickup time")
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
@@ -31,13 +33,16 @@ public class Rent {
 
     @NotEmpty(message = "Please pick a drop date")
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalDate drop_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date drop_date;
 
     @NotEmpty(message = "Please pick a drop time")
     @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalTime drop_time;
 
     private enum rent_status {
+        PENDING,
+        COMPLETED,
         RENTED,
         RETURNED_ONTIME,
         RETURNED_LATE
@@ -53,5 +58,9 @@ public class Rent {
     @ManyToOne(fetch=FetchType.LAZY,optional = false )
     @JoinColumn(name="vehicle_id")
     private Vehicle vehicle;
+
+    @ManyToOne(fetch=FetchType.LAZY,optional = false )
+    @JoinColumn(name="insurance_id")
+    private Insurance insurance;
 
 }

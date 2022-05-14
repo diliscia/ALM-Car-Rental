@@ -24,6 +24,7 @@
             <th>drop time</th>
             <th>status</th>
             <th>username</th>
+            <th>Model Name</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -35,7 +36,7 @@
             <td th:text="${rent.pickup_time}"></td>
             <td th:text="${rent.status}"></td>
             <td th:text="${rent.user.username}"></td>
-<!--            <td th:text="${rent.vehicle.modelName}"></td>-->
+            <td th:text="${rent.vehicle.modelName}"></td>
             <td>
                 <a th:href="@{/admin/updateRent(rentId=${rent.id})}" class="btn btn-info">Update</a>
             </td>

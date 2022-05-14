@@ -109,20 +109,24 @@
 - try to create some crud for testing (done)
 - created controller and html pages for User CRUD add/update (done)
 - assisted on Vehicle entity creation and validation and testing
-
 2. To do until next Scrum:
 
 3. Need assistance / figure things out
 - Test if entities are created successfully in MySQL
 -  how to use AWS RDS and AWS S3 
 
-2022/05/1 Alireza
+2022/05/14 Alireza
 1. Done / not done since last scrum:
 - Test RDS connection throw java environment (done)
 - Create an hosting on Heroku (update)
-- created Rent entity
-
+- created Rent entity (done)
 2. To do until next Scrum:
-
+- create insurance entity
+- create billing entity
+- continue working on rent page 
 3. Need assistance / figure things out
-- is there another solution in place of S3+RDS+Heroku? for example one EC2
+- how to handle date in thymleaf
+- how to handle time in thymleaf
+- how to handle enumeration in thymleaf
+- how to handle drop down list in thymleaf
+- how to populate information in drop down list

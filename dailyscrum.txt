@@ -108,18 +108,22 @@
 - create entities (User) and connect to MySQL (done)
 - try to create some crud for testing (done)
 - created controller and html pages for User CRUD add/update (done)
-- assisted on Vehicle entity creation and validation and testing
+- assisted on Vehicle entity creation and validation and testing (done)
 2. To do until next Scrum:
-
+- Create and assist on creating entities billing and insurance and set relationship between the entities
+- Perform tests on program and check codes
+- Fix issues in the registration: Check street regex to allow number letter street. Add information that Province is just 2 letters before showing error. Postal code no spaces. Last name is not allowing last names with two parts (like Di Liscia). Also need to add the License number of the user.
+- Add more validation on other attributes from different entities
+- Assist Ali on fixing date time issues
+- Watch tutorials about Stripe and Wizard
 3. Need assistance / figure things out
-- Test if entities are created successfully in MySQL
--  how to use AWS RDS and AWS S3 
+- How to config S3 on the project
 
 2022/05/14 Alireza
 1. Done / not done since last scrum:
 - Test RDS connection throw java environment (done)
 - Create an hosting on Heroku (update)
-- created Rent entity (done)
+- created Rent entity (done
 2. To do until next Scrum:
 - create insurance entity
 - create billing entity

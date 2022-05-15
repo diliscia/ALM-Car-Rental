@@ -32,7 +32,7 @@ public class User implements UserDetails {
     }
 
     @Column(nullable = false)
-    @Pattern(regexp = "^[a-z0-9]{4,20}$", message = "Username can only contains lowercase letters and numbers. And must be between 4-20 characters.")
+    @Pattern(regexp = "[a-z0-9]{4,20}", message = "Username can only contains lowercase letters and numbers. And must be between 4-20 characters.")
     private String username;
 
     @Enumerated(EnumType.STRING)
@@ -50,12 +50,12 @@ public class User implements UserDetails {
 
     @NotEmpty(message = "First name can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^(?![\\s.]+$)[a-zA-Z\\s.]{1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
+    @Pattern(regexp = "(?![\\s.]+$)[a-zA-Z\\s.]{1,20}", message = "First name can only contains letters and must be between 1-20 characters.")
     private String firstName;
 
     @NotEmpty(message = "Last name can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^[a-zA-Z]{1,20}$", message = "Last name can only contains letters and must be between 1-20 characters.")
+    @Pattern(regexp = "(?![\\s.]+$)[a-zA-Z\\s.]{1,20}", message = "Last name can only contains letters and must be between 1-20 characters.")
     private String lastName;
 
     @NotNull
@@ -74,15 +74,15 @@ public class User implements UserDetails {
     private String street;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "City is invalid!!")
+    @Pattern(regexp = "[a-zA-Z',.\\s-]{1,25}", message = "City is invalid!!")
     private String city;
 
     @NotNull
-    @Pattern(regexp = "^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT|Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland and Labrador|Nova Scotia|Ontario|Prince Edward Island|Quebec|Saskatchewan)*$", message = "Province must be in Canada and have 2 characters.")
+    @Pattern(regexp = "(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT|Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland and Labrador|Nova Scotia|Ontario|Prince Edward Island|Quebec|Saskatchewan)*", message = "Province must be in Canada and have 2 characters.")
     private String province;
 
     @NotNull
-    @Pattern(regexp = "^(?!.*[dfioquDFIOQU])[a-vxyA-VXY][0-9][a-zA-Z] ?[0-9][a-zA-Z][0-9]$", message = "Postal Code is invalid!!")
+    @Pattern(regexp = "(?!.*[dfioquDFIOQU])[a-vxyA-VXY][0-9][a-zA-Z] ?[0-9][a-zA-Z][0-9]", message = "Postal Code is invalid!!")
     private String postalCode;
 
     @Override

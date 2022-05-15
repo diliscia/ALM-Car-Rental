@@ -34,10 +34,15 @@ public class UserService implements UserDetailsService {
             FieldError pwErr = new FieldError("user", "password", PW_ERROR);
             result.addError(pwErr);
         }
-        boolean exists = userRepository.findByUsername(user.getUsername()).isPresent();
-        if (exists) {
-            FieldError nameTaken = new FieldError("user", "username", "Username is taken");
+        boolean userExists = userRepository.findByUsername(user.getUsername()).isPresent();
+        if (userExists) {
+            FieldError nameTaken = new FieldError("user", "username", "Username already exist!");
             result.addError(nameTaken);
+        }
+        boolean emailExists = userRepository.findByEmail(user.getEmail()).isPresent();
+        if (emailExists) {
+            FieldError emailExisted = new FieldError("user", "email", "Email already exist!");
+            result.addError(emailExisted);
         }
         if (!user.getPassword().equals(user.getPasswordRepeat())) {
             FieldError pwRepeat = new FieldError("user", "passwordRepeat", "Please enter the same password");

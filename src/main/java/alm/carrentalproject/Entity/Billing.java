@@ -15,7 +15,7 @@ import java.util.Date;
 public class Billing {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull(message="Bill date cannot be null and not before the current date")
@@ -27,7 +27,7 @@ public class Billing {
         PAID
     }
     @Enumerated(EnumType.STRING)
-    private Billing.Status status = Status.NOT_PAID;
+    private Status isPaid = Status.NOT_PAID;
 
     @NotNull(message="Due date cannot be null and not before the current date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -46,4 +46,13 @@ public class Billing {
     @ManyToOne(fetch=FetchType.LAZY,optional = false )
     @JoinColumn(name="rent_id")
     private Rent rent;
+
+    public Billing(Date bill_date, Status isPaid, Date due_date, double amount, double late_fee, Rent rent) {
+        this.bill_date = bill_date;
+        this.isPaid = isPaid;
+        this.due_date = due_date;
+        this.amount = amount;
+        this.late_fee = late_fee;
+        this.rent = rent;
+    }
 }

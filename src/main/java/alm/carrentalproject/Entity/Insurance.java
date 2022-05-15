@@ -16,7 +16,7 @@ import javax.validation.constraints.Pattern;
 public class Insurance {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "Please enter an insurance name")

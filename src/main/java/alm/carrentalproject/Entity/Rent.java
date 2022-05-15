@@ -1,5 +1,6 @@
 package alm.carrentalproject.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,32 +16,33 @@ import java.util.Date;
 @Entity
 @Table(name = "rents")
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class Rent {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "Please choose a pickup date")
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+//    @NotNull(message = "Please choose a pickup date")
+//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date pickup_date;
 
-    @NotEmpty(message = "Please choose a pickup time")
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+//    @NotNull(message = "Please choose a pickup time")
+//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalTime pickup_time;
 
-    @NotEmpty(message = "Please pick a drop date")
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+//    @NotNull(message = "Please pick a drop date")
+//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date drop_date;
 
-    @NotEmpty(message = "Please pick a drop time")
-    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+//    @NotNull(message = "Please pick a drop time")
+//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     private LocalTime drop_time;
 
-    private enum rent_status {
+    private enum RENT_STATUS {
         PENDING,
         COMPLETED,
         RENTED,
@@ -49,7 +51,8 @@ public class Rent {
     }
 
     @Enumerated(EnumType.STRING)
-    private Rent.rent_status status = rent_status.RENTED;
+//    @Column(nullable = false)
+    private RENT_STATUS status = RENT_STATUS.RENTED;
 
     @ManyToOne(fetch=FetchType.LAZY,optional = false )
     @JoinColumn(name="user_id")

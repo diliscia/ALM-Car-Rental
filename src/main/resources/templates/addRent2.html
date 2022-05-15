@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 
+<!--<head th:replace="fragment/header_auth :: head">-->
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" th:href="@{/style.css}">
-    <script src="https://cdn.tiny.cloud/1/mzdw9eyj43opbdruhp08ch6yi42k5zrklmw997yjgn0b9uqe/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <title>Rent a Vehicle | ALM Car Rental</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Rent a Vehicle | ALM Car Rental </title>
+    <script src="date.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <body class="grey lighten-4">
@@ -21,13 +25,13 @@
 
     <form th:action="@{/saveRent}" th:object="${rent}" method="POST">
         <label>Pick up Date</label>
-        <input type="date" th:field="*{pickup_date}" ><br>
+        <input type="date" th:field="*{pickup_date}" id="pickup_date"><br>
         <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>
         <label>Pick up Time</label>
         <input type="time" th:field="*{pickup_time}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>
         <label>Drop Date</label>
-        <input type="date" th:field="*{drop_date}" ><br>
+        <input type="date" th:field="*{drop_date}" id="drop_date" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>
         <label>Drop Time</label>
         <input type="time" th:field="*{drop_time}" ><br>
@@ -44,25 +48,6 @@
         <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
 
       <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
-
-        <label for ="cars"> Choose a car:</label>
-        <select name="cars" id="cars">
-            <option value="Toyota"  >Toyota</option>
-            <option value="Ford" >Ford</option>
-        </select>
-
-        <!-- Dropdown Trigger -->
-        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a href="#!">three</a></li>
-            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-        </ul>
     </form>
     </hr>
     <a th:href="@{/index}">Cancel the Operation</a>

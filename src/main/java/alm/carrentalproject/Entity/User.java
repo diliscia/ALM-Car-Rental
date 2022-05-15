@@ -63,6 +63,10 @@ public class User implements UserDetails {
     @Pattern(regexp = "[2-9][0-9]{9}", message = "Phone number is invalid!!")
     private String phone;
 
+    @NotNull
+    @NotEmpty(message = "Driver License cannot be empty")
+    private String driverLicense;
+
     private String apt;
 
     @NotNull

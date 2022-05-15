@@ -39,6 +39,9 @@
     <label >Phone</label>
     <input type="text" th:field="*{phone}" ><br>
     <div class="red-text" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error</div>
+    <label >Driver License</label>
+    <input type="text" th:field="*{driverLicense}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('driverLicense')}" th:errors="*{driverLicense}">error</div>
     <label >Apt</label>
     <input type="text" th:field="*{apt}" ><br>
     <div class="red-text" th:if="${#fields.hasErrors('apt')}" th:errors="*{apt}">error</div>

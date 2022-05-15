@@ -63,8 +63,10 @@ public class User implements UserDetails {
     @Pattern(regexp = "[2-9][0-9]{9}", message = "Phone number is invalid!!")
     private String phone;
 
+    private String apt;
+
     @NotNull
-    @Pattern(regexp = "\\s*\\S+(?:\\s+\\S+){2}", message = "Street is invalid!!")
+    @Pattern(regexp = "[#.0-9a-zA-Z\\s,-]+", message = "Street is invalid!!")
     private String street;
 
     @NotNull
@@ -72,11 +74,11 @@ public class User implements UserDetails {
     private String city;
 
     @NotNull
-    @Pattern(regexp = "^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT)*$", message = "Province must be in Canada and have 2 characters.")
+    @Pattern(regexp = "^(?:AB|BC|MB|N[BLTSU]|ON|PE|QC|SK|YT|Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland and Labrador|Nova Scotia|Ontario|Prince Edward Island|Quebec|Saskatchewan)*$", message = "Province must be in Canada and have 2 characters.")
     private String province;
 
     @NotNull
-    @Pattern(regexp = "^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$", message = "Postal Code is invalid!!")
+    @Pattern(regexp = "^(?!.*[dfioquDFIOQU])[a-vxyA-VXY][0-9][a-zA-Z] ?[0-9][a-zA-Z][0-9]$", message = "Postal Code is invalid!!")
     private String postalCode;
 
     @Override

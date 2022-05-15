@@ -39,6 +39,9 @@
     <label >Phone</label>
     <input type="text" th:field="*{phone}" ><br>
     <div class="red-text" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error</div>
+    <label >Apt</label>
+    <input type="text" th:field="*{apt}" ><br>
+    <div class="red-text" th:if="${#fields.hasErrors('apt')}" th:errors="*{apt}">error</div>
     <label >Street</label>
     <input type="text" th:field="*{street}" ><br>
     <div class="red-text" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">error</div>

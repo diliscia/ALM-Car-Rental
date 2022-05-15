@@ -1,9 +1,7 @@
 package alm.carrentalproject.Controller;
 
-import alm.carrentalproject.Entity.User;
 import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Repository.VehicleRepository;
-import alm.carrentalproject.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

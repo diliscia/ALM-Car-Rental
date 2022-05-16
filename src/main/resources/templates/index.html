@@ -16,7 +16,7 @@
 <!--<p th:text="'Hello, welcome to ALM Car Rental!'" />-->
 <hr/>
 
-
+<a th:href="@{/getDateTime}"  class="btn btn-primary mb-2">Start your Rent</a>
 <a th:href="@{/admin/vehicles}"  class="btn btn-primary mb-2">Go to List of Vehicles</a>
 <a th:href="@{/client-vehicles}"  class="btn btn-primary mb-2">Go to Client Vehicles</a>
 <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>

@@ -16,6 +16,11 @@
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
+
+    <h4> Pickup Date : <span th:text="${pickup_date}" /></h4>
+    <h4> Pickup Time : <span th:text="${pickup_time}" /> </h4>
+    <h4> Drop Date : <span th:text="${drop_date}" /></h4>
+    <h4> Drop Time : <span th:text="${drop_time}" /> </h4>
     <table class="table table-bordered table-striped" id="vehicles-table">
         <thead>
         <tr>

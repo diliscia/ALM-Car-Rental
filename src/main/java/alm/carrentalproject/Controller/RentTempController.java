@@ -30,7 +30,7 @@ public class RentTempController {
 
     @Autowired
     private RentTempRepository rentTempRepository;
-    private VehicleRepository vehicleRepo;
+    private VehicleRepository vehicleRepository;
     private InsuranceRepository insuranceRepo;
 
 //    @GetMapping("/addTempRent")
@@ -66,18 +66,35 @@ public class RentTempController {
         return "addDateTime";
     }
 
+//    @GetMapping("/saveDateTime")                     // it only support port method
+//    public String saveDetails(@RequestParam("pickup_date") String pickup_date,
+//                              @RequestParam("pickup_time") String pickup_time,
+//                              @RequestParam("drop_date") String drop_date,
+//                              @RequestParam("drop_time") String drop_time,
+//                              ModelMap modelMap) {
+//        // write your code to save details
+//        modelMap.put("pickup_date", pickup_date);
+//        modelMap.put("pickup_time", pickup_time);
+//        modelMap.put("drop_date", drop_date);
+//        modelMap.put("drop_time", drop_time);
+//        return "/client-vehicles";           // welcome is view name. It will call welcome.jsp
+//    }
+
     @GetMapping("/saveDateTime")                     // it only support port method
-    public String saveDetails(@RequestParam("pickup_date") String pickup_date,
-                              @RequestParam("pickup_time") String pickup_time,
-                              @RequestParam("drop_date") String drop_date,
-                              @RequestParam("drop_time") String drop_time,
-                              ModelMap modelMap) {
+    public ModelAndView saveDetails(@RequestParam("pickup_date") String pickup_date,
+                                    @RequestParam("pickup_time") String pickup_time,
+                                    @RequestParam("drop_date") String drop_date,
+                                    @RequestParam("drop_time") String drop_time,
+                                    ModelMap modelMap) {
         // write your code to save details
         modelMap.put("pickup_date", pickup_date);
         modelMap.put("pickup_time", pickup_time);
         modelMap.put("drop_date", drop_date);
         modelMap.put("drop_time", drop_time);
-        return "redirect://saveDateTime?pickup_date=" + pickup_date +"&pickup_time=" + pickup_time + "&drop_date=" + drop_date + "&drop_time=" + drop_time + "&submit=Chose+Vehicle"; 
+        ModelAndView mav = new ModelAndView("client-vehicles");
+        List<Vehicle> vehicleList = vehicleRepository.findAll();
+        mav.addObject("vehicle", vehicleList);
+        return mav;
     }
 
     @PostMapping("/setVehicle")

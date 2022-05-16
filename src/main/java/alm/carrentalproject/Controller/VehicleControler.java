@@ -60,13 +60,27 @@ public class VehicleControler {
         return mav;
     }
 
-
-
-    @GetMapping("/admin/deleteVehicle")
-    public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
-        redirAttrs.addFlashAttribute("success", "Vehicle deleted successfully!!");
-//        model.addAttribute("success", "Vehicle deleted successfully!!");
-        vehicleRepo.deleteById(vehicleId);
-        return"redirect:/admin/vehicles";
+    @GetMapping("/client-vehicles")
+    public ModelAndView ClientVehiclesPage() {
+        ModelAndView mav = new ModelAndView("client-vehicles");
+        List<Vehicle> vehicleList = vehicleRepo.findAll();
+        mav.addObject("vehicle", vehicleList);
+        return mav;
     }
+
+    @GetMapping("/selectVehicle")
+    public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
+        redirAttrs.addFlashAttribute("success", "Vehicle selected successfully!!");
+//        model.addAttribute("success", "Vehicle deleted successfully!!");
+        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+        return"redirect:/client-vehicles";
+    }
+
+//    @GetMapping("/selectVehicle")
+//    public ModelAndView showUpdateForm(@RequestParam Long vehicleId) {
+//        ModelAndView mav = new ModelAndView("client-vehicle");
+//        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+//        mav.addObject("vehicle", vehicle);
+//        return mav;
+//    }
 }

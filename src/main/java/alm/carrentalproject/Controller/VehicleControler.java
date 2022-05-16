@@ -69,12 +69,12 @@ public class VehicleControler {
     }
 
     @GetMapping("/selectVehicle")
-    public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
+    public String selectVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
         redirAttrs.addFlashAttribute("success", "Vehicle selected successfully!!");
-//        model.addAttribute("success", "Vehicle deleted successfully!!");
         Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
-        return"redirect:/client-vehicles";
+        return"redirect:/insurances";
     }
+
 
 //    @GetMapping("/selectVehicle")
 //    public ModelAndView showUpdateForm(@RequestParam Long vehicleId) {

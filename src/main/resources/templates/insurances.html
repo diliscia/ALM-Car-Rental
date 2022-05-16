@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List of Vehicles</title>
+    <title>Insurances</title>
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
     <link rel="stylesheet"
@@ -12,34 +12,26 @@
 </head>
 <body>
 <div class="container">
-    <h2>List of Vehicles</h2>
+    <h2>Insurances</h2>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-    <table class="table table-bordered table-striped" id="vehicles-table">
+    <table class="table table-bordered table-striped" id="insurances-table">
         <thead>
         <tr>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Mileage</th>
-            <th>Capacity</th>
+            <th>Name</th>
+            <th>Type</th>
             <th>Cost per Day</th>
-            <th>Status</th>
-            <th>Category</th>
             <th>Action</th>
         </tr>
         </thead>
-        <tbody >
-        <tr th:each="vehicle: ${vehicle}">
-            <td th:text="${vehicle.modelName}"></td>
-            <td th:text="${vehicle.modelYear}"></td>
-            <td th:text="${vehicle.mileage}"></td>
-            <td th:text="${vehicle.capacity}"></td>
-            <td th:text="${vehicle.costPerDay}"></td>
-            <td th:text="${vehicle.status}"></td>
-            <td th:text="${vehicle.category}"></td>
+        <tbody>
+        <tr th:each="insurance: ${insurances}">
+            <td th:text="${insurance.name}"></td>
+            <td th:text="${insurance.type}"></td>
+            <td th:text="${insurance.costPerDay}"></td>
             <td>
-                <a th:href="@{/selectVehicle(vehicleId=${vehicle.id},rentId=${rentId})}" class="btn btn-info">Select</a>
+                <a th:href="@{/selectInsurance(vehicleId=${insurance.id})}" class="btn btn-info">Select</a>
             </td>
         </tr>
         </tbody>
@@ -49,7 +41,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
 <script>
         $(document).ready(function() {
-            $("#vehicles-table").DataTable({
+            $("#insurances-table").DataTable({
                 'aoColumnDef': [{
                     'bSortable': false,
                     'aTarget': [-1]

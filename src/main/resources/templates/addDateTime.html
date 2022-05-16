@@ -22,21 +22,21 @@
 <div class="container">
   <h3 class="brand-text">Make a Rent</h3>
 
-  <form th:action="@{/saveTempRent}" th:object="${rent}" method="POST">
+  <form th:action="@{/saveDateTime}" method="GET">
     <label>Pick up Date</label>
-    <input type="date" th:field="*{pickup_date}" id="pickup_date"><br>
-    <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>
+    <input type="date" name="pickup_date"><br>
+<!--    <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>-->
     <label>Pick up Time</label>
-    <input type="time" th:field="*{pickup_time}" step="00:15" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>
+    <input type="time" name="pickup_time"><br>
+<!--    <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>-->
     <label>Drop Date</label>
-    <input type="date" th:field="*{drop_date}" id="drop_date" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>
+    <input type="date"  name="drop_date"><br>
+<!--    <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>-->
     <label>Drop Time</label>
-    <input type="time" th:field="*{drop_time}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
+    <input type="time" name="drop_time"><br>
+<!--    <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>-->
 
-    <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
+    <input class="waves-effect waves-light btn" type="submit" name="submit" value="Chose Vehicle">
   </form>
   </hr>
   <a th:href="@{/index}">Cancel the Operation</a>

@@ -1,5 +1,6 @@
 package alm.carrentalproject.Controller;
 
+import alm.carrentalproject.Entity.Insurance;
 import alm.carrentalproject.Entity.Rent;
 import alm.carrentalproject.Entity.RentTemp;
 import alm.carrentalproject.Entity.Vehicle;
@@ -30,8 +31,10 @@ public class RentTempController {
 
     @Autowired
     private RentTempRepository rentTempRepository;
+    @Autowired
     private VehicleRepository vehicleRepository;
-    private InsuranceRepository insuranceRepo;
+    @Autowired
+    private InsuranceRepository insuranceRepository;
 
 //    @GetMapping("/addTempRent")
 //    public ModelAndView showRentPage(){
@@ -97,15 +100,35 @@ public class RentTempController {
         return mav;
     }
 
-    @PostMapping("/setVehicle")
-    public String setVehicle(@RequestParam Long vehicleId, Vehicle vehicle, BindingResult result, Principal principal) {
-        // TODO: validation and error display
-        if (result.hasErrors()) {
-            return "setVehicle";
-        }
-//         TODO: author not found exception
-        return "redirect:/client-vehicles?id=" + vehicleId.toString();
+    @GetMapping("/setVehicle")                     // it only support port method
+    public ModelAndView saveDetails(@RequestParam("pickup_date") String pickup_date,
+                                    @RequestParam("pickup_time") String pickup_time,
+                                    @RequestParam("drop_date") String drop_date,
+                                    @RequestParam("drop_time") String drop_time,
+                                    @RequestParam("vehicleId") String vehicleId,
+                                    ModelMap modelMap) {
+        // write your code to save details
+        modelMap.put("pickup_date", pickup_date);
+        modelMap.put("pickup_time", pickup_time);
+        modelMap.put("drop_date", drop_date);
+        modelMap.put("drop_time", drop_time);
+        modelMap.put("vehicleId", vehicleId);
+        ModelAndView mav = new ModelAndView("insurances");
+        List<Insurance> insuranceList = insuranceRepository.findAll();
+        mav.addObject("insurance", insuranceList);
+        return mav;
     }
+
+
+//    @PostMapping("/setVehicle")
+//    public String setVehicle(@RequestParam Long vehicleId, Vehicle vehicle, BindingResult result, Principal principal) {
+//        // TODO: validation and error display
+//        if (result.hasErrors()) {
+//            return "setVehicle";
+//        }
+////         TODO: author not found exception
+//        return "redirect:/client-vehicles?id=" + vehicleId.toString();
+//    }
 
 
 }

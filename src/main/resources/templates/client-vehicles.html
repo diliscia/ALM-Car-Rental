@@ -16,11 +16,10 @@
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-
-    <h4> Pickup Date : <span th:text="${pickup_date}" /></h4>
-    <h4> Pickup Time : <span th:text="${pickup_time}" /> </h4>
-    <h4> Drop Date : <span th:text="${drop_date}" /></h4>
-    <h4> Drop Time : <span th:text="${drop_time}" /> </h4>
+    <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
+    <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
+    <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
+    <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
     <table class="table table-bordered table-striped" id="vehicles-table">
         <thead>
         <tr>
@@ -44,7 +43,8 @@
             <td th:text="${vehicle.status}"></td>
             <td th:text="${vehicle.category}"></td>
             <td>
-                <a th:href="@{/selectVehicle(vehicleId=${vehicle.id},rentId=${rentId})}" class="btn btn-info">Select</a>
+                <a th:href="@{/selectVehicle/}" name="vehicleId" class="btn btn-info"
+                type="hidden" th:value="${vehicleId}">Select</a>
             </td>
         </tr>
         </tbody>

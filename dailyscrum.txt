@@ -81,9 +81,9 @@
 3. Need assistance / figure things out
 - is there another solution in place of S3+RDS+Heroku? for example one EC2
 
-*********** 2022-05-14  ************
+*********** 2022-05-16  ************
 
-2022/05/14 Marcelo
+2022/05/16 Marcelo
 1. Done / not done since last scrum:
 - do tests with Stripe, RDS and S3 (done with Stripe and RDS no with S3)
 - watch more tutorials, Heroku (not done)
@@ -101,7 +101,7 @@
 3. Need assistance / figure things out
 - solve the Vehicle POST issue (Request method 'POST' not supported) 
 
-2022/05/14 Ly
+2022/05/16 Ly
 1. Done / not done since last scrum:
 - assist setting up the project on Git (done)
 - set up S3 (done)
@@ -133,4 +133,48 @@
 - how to handle time in thymleaf
 - how to handle enumeration in thymleaf
 - how to handle drop down list in thymleaf
+- how to populate information in drop down list
+
+*********** 2022-05-16  ************
+
+2022/05/16 Marcelo
+1. Done / not done since last scrum:
+- fix Vehicle CRUD add/update issue (done) 
+- updated vehicle entity validation values that were causing problems (done)
+- reasearch on update/add image to vehicle (not done)
+- create client vehicle list view (done)
+- perform tests on program and check codes (done)
+2. To do until next Scrum:
+- reasearch on update/add image to web page
+- research to include images from S3
+- Work with Ali in the wizard
+3. Need assistance / figure things out
+- how to use images from S3
+
+2022/05/16 Ly
+1. Done / not done since last scrum:
+- Create and assist on creating entities billing and insurance and set relationship between the entities (done)
+- Perform tests on program and check codes (done)
+- Fix issues in the registration: Check street regex to allow number letter street. Add information that Province is just 2 letters before showing error. Postal code no spaces. Last name is not allowing last names with two parts (like Di Liscia). Also need to add the License number of the user. (done)
+- Add more validation on other attributes from different entities (done)
+- Assist Ali on fixing date time issues (done)
+- Watch tutorials about Stripe (not done) and Wizard (done)
+2. To do until next Scrum:
+- Continue adding more validation on other attributes from different entities
+- Work with Ali on the wizard 
+3. Need assistance / figure things out
+- How to config S3 on the project
+
+2022/05/16 Alireza
+1. Done / not done since last scrum:
+- create insurance entity (done)
+- create billing entity (done)
+- continue working on rent page (done)
+- reasearch on implementing wizard into project (done)
+- fixing date and time (done)
+- validation data for date and time on rent entity (done)
+2. To do until next Scrum:
+- continue on implementing the rent wizard
+3. Need assistance / figure things out
+- how to handle enumeration in thymleaf
 - how to populate information in drop down list

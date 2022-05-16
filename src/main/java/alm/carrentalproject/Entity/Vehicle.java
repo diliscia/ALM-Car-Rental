@@ -62,6 +62,7 @@ public class Vehicle {
 
     @NotNull(message = "Mileage can not be empty!!")
     @Column(nullable = false)
+    @Min(value = 0, message = "Mileage must be a positive number")
     @Max(value = 999999, message = "Mileage must be maximum 6 numbers.")
     private Integer mileage;
 

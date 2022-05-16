@@ -14,7 +14,8 @@
 <div class="container">
     <h2>List of Vehicles</h2>
     <hr/>
-    <a th:href="@{/admin/addVehicle}" class="btn btn-primary mb-2">Add Vehicle</a>
+    <a th:href="@{/admin/addVehicleForm}" class="btn btn-primary mb-2">Add Vehicle</a>
+    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <table class="table table-bordered table-striped" id="employee-table">
         <thead>
         <tr>

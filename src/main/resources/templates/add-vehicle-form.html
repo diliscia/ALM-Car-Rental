@@ -17,7 +17,7 @@
 </nav>
 <div class="container">
     <h3 class="brand-text">Add Vehicle</h3>
-    <form th:action="@{/admin/vehicles}" th:object="${vehicle}" method="POST">
+    <form th:action="@{/admin/saveVehicle}" th:object="${vehicle}" method="POST">
         <label >Model Name</label>
         <input type="text" th:field="*{modelName}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>
@@ -38,14 +38,14 @@
             <label class="form-label">Status</label><br>
             <p>
                 <label>
-                    <input class="with-gap" th:field="*{status}" value ="Available" name="group2" type="radio"  />
-                    <span>Available</span>
+                    <input class="with-gap" th:field="*{status}" value ="AVAILABLE" name="group2" type="radio"  />
+                    <span>AVAILABLE</span>
                 </label>
             </p>
             <p>
                 <label>
-                    <input class="with-gap" th:field="*{status}" value = "Rented" name="group2" type="radio"  />
-                    <span>Rented</span>
+                    <input class="with-gap" th:field="*{status}" value = "RENTED" name="group2" type="radio"  />
+                    <span>RENTED</span>
                 </label>
             </p>
 
@@ -86,7 +86,8 @@
             </p>
 
         </div>
-        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Register!">
+        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Save">
+        <input type="hidden" th:field="*{id}" />
     </form>
 
     </hr>

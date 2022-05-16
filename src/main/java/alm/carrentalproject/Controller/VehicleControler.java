@@ -32,9 +32,9 @@ public class VehicleControler {
         return mav;
     }
 
-    @GetMapping("/admin/addVehicle")
+    @GetMapping("/admin/addVehicleForm")
     public ModelAndView addVehicle() {
-        ModelAndView mav = new ModelAndView("add-vehicle");
+        ModelAndView mav = new ModelAndView("add-vehicle-form");
         Vehicle newVehicle = new Vehicle();
         mav.addObject("vehicle", newVehicle);
         return mav;
@@ -43,22 +43,24 @@ public class VehicleControler {
     @PostMapping("/admin/saveVehicle")
     public String saveVehicle(@Valid @ModelAttribute Vehicle vehicle, Errors errors, Model model, RedirectAttributes redirAttrs) {
         if (null != errors && errors.getErrorCount() > 0) {
-            return"/admin/add-vehicle";
+            return"/add-vehicle-form";
         } else {
             redirAttrs.addFlashAttribute("success", "Vehicle details saved successfully!!");
 //            model.addAttribute("success", "Vehicle details saved successfully!!");
             vehicleRepo.save(vehicle);
-            return"redirect:/admin/vehicles";
+            return"redirect:vehicles";
         }
     }
 
     @GetMapping("/admin/showUpdateForm")
     public ModelAndView showUpdateForm(@RequestParam Long vehicleId) {
-        ModelAndView mav = new ModelAndView("add-vehicle");
+        ModelAndView mav = new ModelAndView("add-vehicle-form");
         Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
         mav.addObject("vehicle", vehicle);
         return mav;
     }
+
+
 
     @GetMapping("/admin/deleteVehicle")
     public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {

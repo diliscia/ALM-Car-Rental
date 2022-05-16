@@ -1,6 +1,5 @@
 package alm.carrentalproject.Entity;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -55,25 +54,25 @@ public class Vehicle {
     @Pattern(regexp = "^(?![\\s.]+$)[a-zA-Z\\s.]*${1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
     private String modelName;
 
-    @NotEmpty(message = "Model year can not be empty!!")
+    @NotNull(message = "Model year can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]{4}", message = "Model year must be 4 numbers.")
+    @Min(value = 2000, message = "Model year must be newer than 2000.")
+    @Max(value = 2022, message = "Model year cannot be newer than 2022.")
     private Integer modelYear;
 
-    @NotEmpty(message = "Mileage can not be empty!!")
+    @NotNull(message = "Mileage can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]{6}", message = "Mileage must be maximum 6 numbers.")
+    @Max(value = 999999, message = "Mileage must be maximum 6 numbers.")
     private Integer mileage;
 
-    @NotEmpty(message = "Capacity can not be empty!!")
+    @NotNull(message = "Capacity can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^[0-9]{1}", message = "Capacity must be 1 number.")
+    @Min(value = 2, message = "Capacity must be minimum 2.")
+    @Max(value = 7, message = "Capacity must be maximum 7.")
     private Integer capacity;
 
-    @NotEmpty(message = "Cost per Day can not be empty!!")
+    @NotNull(message = "Cost per Day can not be empty!!")
     @Column(nullable = false)
-    @Min(value = 10, message = "Cost per day should be minimum 10!!")
-    @Max(value = 300, message = "Cost per day should be maximum 300!!")
-    @Pattern(regexp = "^\\d+(,\\d{1,2})?$", message = "Cost per day must be a number.")
+    @DecimalMax("300.00") @DecimalMin("10.00")
     private double costPerDay;
 }

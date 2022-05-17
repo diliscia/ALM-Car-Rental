@@ -1,29 +1,16 @@
 package alm.carrentalproject.Controller;
 
 import alm.carrentalproject.Entity.Insurance;
-import alm.carrentalproject.Entity.Rent;
-import alm.carrentalproject.Entity.RentTemp;
 import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Repository.InsuranceRepository;
 import alm.carrentalproject.Repository.RentTempRepository;
 import alm.carrentalproject.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.validation.Valid;
-import java.security.Principal;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -100,22 +87,45 @@ public class RentTempController {
         return mav;
     }
 
-    @GetMapping("/setVehicle")                     // it only support port method
+    @GetMapping("/setVehicle")
     public ModelAndView saveDetails(@RequestParam("pickup_date") String pickup_date,
                                     @RequestParam("pickup_time") String pickup_time,
                                     @RequestParam("drop_date") String drop_date,
                                     @RequestParam("drop_time") String drop_time,
-                                    @RequestParam("vehicleId") String vehicleId,
+                                    @RequestParam("vehicleId") Long vehicleId,
                                     ModelMap modelMap) {
-        // write your code to save details
         modelMap.put("pickup_date", pickup_date);
         modelMap.put("pickup_time", pickup_time);
         modelMap.put("drop_date", drop_date);
         modelMap.put("drop_time", drop_time);
         modelMap.put("vehicleId", vehicleId);
         ModelAndView mav = new ModelAndView("insurances");
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+        mav.addObject("vehicle", vehicle);
         List<Insurance> insuranceList = insuranceRepository.findAll();
-        mav.addObject("insurance", insuranceList);
+        mav.addObject("insurances", insuranceList);
+        return mav;
+    }
+
+    @GetMapping("/setInsurance")
+    public ModelAndView saveDetails(@RequestParam("pickup_date") String pickup_date,
+                                    @RequestParam("pickup_time") String pickup_time,
+                                    @RequestParam("drop_date") String drop_date,
+                                    @RequestParam("drop_time") String drop_time,
+                                    @RequestParam("vehicleId") Long vehicleId,
+                                    @RequestParam("insuranceId") Long insuranceId,
+                                    ModelMap modelMap) {
+        modelMap.put("pickup_date", pickup_date);
+        modelMap.put("pickup_time", pickup_time);
+        modelMap.put("drop_date", drop_date);
+        modelMap.put("drop_time", drop_time);
+        modelMap.put("vehicleId", vehicleId);
+        modelMap.put("insuranceId", insuranceId);
+        ModelAndView mav = new ModelAndView("confirmation");
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+        mav.addObject("vehicle", vehicle);
+        Insurance insurance = insuranceRepository.findById(vehicleId).get();
+        mav.addObject("insurance", insurance);
         return mav;
     }
 

@@ -43,12 +43,8 @@
             <td th:text="${vehicle.costPerDay}"></td>
             <td th:text="${vehicle.status}"></td>
             <td th:text="${vehicle.category}"></td>
-            <td th:text="${vehicle.id}"></td>
-<!--                <a th:href="@{/setVehicle(vehicleId=${vehicle.id})}" name="vehicleId" class="btn btn-info">Select</a>-->
-<!--                <form th:action="@{/setVehicle/}">-->
-<!--                    <button class="btn btn-primary" type="submit" th:name="vehicleId" th:value="${vehicle.id}">Select</button>-->
-<!--                </form>-->
-                <button class="btn btn-primary" type="submit"  >Select</button>
+            <td>
+                <button class="btn btn-primary" type="submit" name="vehicleId" th:value="${vehicle.id}">Select</button>
             </td>
         </tr>
         </tbody>

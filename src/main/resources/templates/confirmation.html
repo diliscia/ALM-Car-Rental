@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>Confirm your Booking</h2>
+    <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
+    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+    <hr/>
+    <form th:action="@{/createBooking}" method="POST">
+        <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
+        <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
+        <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
+        <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
+        <input type="hidden" name="vehicleId" th:value="${vehicleId}">
+        <input type="hidden" name="insuranceId" th:value="${insuranceId}">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>Capacity</th>
+                <th>Cost per Day</th>
+                <th>Status</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="vehicle: ${vehicle}">
+                <td th:text="${vehicle.modelName}"></td>
+                <td th:text="${vehicle.modelYear}"></td>
+                <td th:text="${vehicle.mileage}"></td>
+                <td th:text="${vehicle.capacity}"></td>
+                <td th:text="${vehicle.costPerDay}"></td>
+                <td th:text="${vehicle.status}"></td>
+                <td th:text="${vehicle.category}"></td>
+
+            </tr>
+            </tbody>
+
+        </table>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Cost per Day</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="insurance: ${insurance}">
+                <td th:text="${insurance.name}"></td>
+                <td th:text="${insurance.type}"></td>
+                <td th:text="${insurance.costPerDay}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Book">
+    </form>
+</div>
+
+</body>
+</html>

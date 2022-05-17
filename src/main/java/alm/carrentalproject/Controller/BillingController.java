@@ -21,7 +21,6 @@ public class BillingController {
     @Autowired
     private final BillingService billingService;
 
-
     @GetMapping({"/admin/bill-list"})
     public ModelAndView getListOfBill() {
         return billingService.getAllBill();

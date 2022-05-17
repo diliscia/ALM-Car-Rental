@@ -124,7 +124,7 @@ public class RentTempController {
         ModelAndView mav = new ModelAndView("confirmation");
         Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
         mav.addObject("vehicle", vehicle);
-        Insurance insurance = insuranceRepository.findById(vehicleId).get();
+        Insurance insurance = insuranceRepository.findById(insuranceId).get();
         mav.addObject("insurance", insurance);
         return mav;
     }

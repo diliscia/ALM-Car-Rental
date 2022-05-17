@@ -178,7 +178,7 @@ public class RentTempController {
         long diffDays = (newRent.getDrop_date().getTime() - newRent.getPickup_date().getTime());
         diffDays = TimeUnit.DAYS.convert(diffDays, TimeUnit.MILLISECONDS) + 1;
         double totalCost = diffDays * (vehicleCostPerDay + insuranceCostPerDay);
-        
+
         return mav;
     }
 

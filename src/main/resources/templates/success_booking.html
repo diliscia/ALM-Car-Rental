@@ -18,10 +18,10 @@
     <hr/>
     <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
     <form>
-        <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
-        <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
-        <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
-        <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
+        <h4> Pickup Date: <input type="text" name="pickup_date" th:text="${rent.pickup_date}"></h4>
+        <h4> Pickup Time: <input type="text" name="pickup_time" th:text="${rent.pickup_time}"></h4>
+        <h4> Drop Date: <input type="text" name="drop_date" th:text="${rent.drop_date}"></h4>
+        <h4> Drop Time: <input type="text" name="drop_time" th:text="${rent.drop_time}"></h4>
         <input type="hidden" name="vehicleId" th:value="${vehicleId}">
         <input type="hidden" name="insuranceId" th:value="${insuranceId}">
         <table class="table table-bordered table-striped">

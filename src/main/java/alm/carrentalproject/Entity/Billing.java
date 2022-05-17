@@ -22,7 +22,7 @@ public class Billing {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bill_date;
 
-    private enum Status {
+    public enum Status {
         NOT_PAID,
         PAID
     }
@@ -33,14 +33,13 @@ public class Billing {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date due_date;
 
-    @NotEmpty(message = "Amount can not be empty!!")
+    @NotNull(message = "Amount can not be empty!!")
     @Column(nullable = false)
     @Min(value = 10, message = "Cost per day should be minimum 10!!")
-    @Pattern(regexp = "^\\d+(,\\d{1,2})?$", message = "Cost per day must be a number.")
     private double amount;
 
     @Column(nullable = true)
-    @Pattern(regexp = "^\\d+(,\\d{1,2})?$", message = "Late Fee must be a number.")
+    @Min(value = 0, message = "Late Fee should be minimum 0!!")
     private double late_fee;
 
     @ManyToOne(fetch=FetchType.LAZY,optional = false )

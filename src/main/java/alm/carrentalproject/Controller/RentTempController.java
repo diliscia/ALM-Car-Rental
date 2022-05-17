@@ -1,13 +1,7 @@
 package alm.carrentalproject.Controller;
 
-import alm.carrentalproject.Entity.Insurance;
-import alm.carrentalproject.Entity.Rent;
-import alm.carrentalproject.Entity.User;
-import alm.carrentalproject.Entity.Vehicle;
-import alm.carrentalproject.Repository.InsuranceRepository;
-import alm.carrentalproject.Repository.RentRepository;
-import alm.carrentalproject.Repository.UserRepository;
-import alm.carrentalproject.Repository.VehicleRepository;
+import alm.carrentalproject.Entity.*;
+import alm.carrentalproject.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +14,7 @@ import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,6 +30,8 @@ public class RentTempController {
     private InsuranceRepository insuranceRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BillingRepository billingRepository;
 
 //    @GetMapping("/addTempRent")
 //    public ModelAndView showRentPage(){
@@ -178,7 +175,26 @@ public class RentTempController {
         long diffDays = (newRent.getDrop_date().getTime() - newRent.getPickup_date().getTime());
         diffDays = TimeUnit.DAYS.convert(diffDays, TimeUnit.MILLISECONDS) + 1;
         double totalCost = diffDays * (vehicleCostPerDay + insuranceCostPerDay);
-        
+
+        //long miliseconds = System.currentTimeMillis();
+        //Date todayDate = new Date(miliseconds);
+        Date todayDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(todayDate);
+        c.add(Calendar.DAY_OF_YEAR, 90);
+        System.out.println(c.getTime());
+        Date dueDate = c.getTime();
+
+        Billing bill = new Billing();
+        bill.setAmount(totalCost);
+        bill.setRent(rentRepository.findById(newRent.getId()).get());
+        bill.setBill_date(todayDate);
+        bill.setDue_date(dueDate);
+        bill.setIsPaid(Billing.Status.NOT_PAID);
+        bill.setLate_fee(0);
+        billingRepository.save(bill);
+        mav.addObject("bill", bill);
+
         return mav;
     }
 

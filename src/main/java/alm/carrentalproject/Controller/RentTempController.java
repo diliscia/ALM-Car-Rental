@@ -199,6 +199,15 @@ public class RentTempController {
     }
 
 
+    @GetMapping("/makepayment")
+    public ModelAndView MakePayment(@RequestParam("billId") Long billId, ModelMap modelMap) {
+        ModelAndView mav = new ModelAndView("payment");
+        modelMap.put("billId", billId);
+        Billing bill = billingRepository.findById(billId).get();
+        mav.addObject("bill",bill);
+        return mav;
+    }
+
 
 
 }

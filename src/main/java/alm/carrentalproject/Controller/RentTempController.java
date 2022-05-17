@@ -1,27 +1,40 @@
 package alm.carrentalproject.Controller;
 
 import alm.carrentalproject.Entity.Insurance;
+import alm.carrentalproject.Entity.Rent;
+import alm.carrentalproject.Entity.User;
 import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Repository.InsuranceRepository;
-import alm.carrentalproject.Repository.RentTempRepository;
+import alm.carrentalproject.Repository.RentRepository;
+import alm.carrentalproject.Repository.UserRepository;
 import alm.carrentalproject.Repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class RentTempController {
 
     @Autowired
-    private RentTempRepository rentTempRepository;
+    private RentRepository rentRepository;
     @Autowired
     private VehicleRepository vehicleRepository;
     @Autowired
     private InsuranceRepository insuranceRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 //    @GetMapping("/addTempRent")
 //    public ModelAndView showRentPage(){
@@ -136,15 +149,40 @@ public class RentTempController {
 //        return"redirect:/insurances";
 //    }
 
-//    @PostMapping("/setVehicle")
-//    public String setVehicle(@RequestParam Long vehicleId, Vehicle vehicle, BindingResult result, Principal principal) {
-//        // TODO: validation and error display
-//        if (result.hasErrors()) {
-//            return "setVehicle";
-//        }
-////         TODO: author not found exception
-//        return "redirect:/client-vehicles?id=" + vehicleId.toString();
-//    }
+    @PostMapping("/createBooking")
+    public ModelAndView createBooking(@RequestParam("pickup_date") String pickup_date,
+                                @RequestParam("pickup_time") String pickup_time,
+                                @RequestParam("drop_date") String drop_date,
+                                @RequestParam("drop_time") String drop_time,
+                                @RequestParam("vehicleId") Long vehicleId,
+                                @RequestParam("insuranceId") Long insuranceId,
+                                ModelMap modelMap, Principal principal) throws ParseException {
+        ModelAndView mav = new ModelAndView("success_booking");
+        Rent newRent = new Rent();
+        newRent.setPickup_date(new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date));
+        newRent.setPickup_time(new SimpleDateFormat("HH:mm").parse(pickup_time));
+        newRent.setDrop_date(new SimpleDateFormat("yyyy-MM-dd").parse(drop_date));
+        newRent.setDrop_time(new SimpleDateFormat("HH:mm").parse(drop_time));
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+        newRent.setVehicle(vehicle);
+        Insurance insurance = insuranceRepository.findById(insuranceId).get();
+        newRent.setInsurance(insurance);
+        newRent.setStatus(Rent.RENT_STATUS.PENDING);
+        User user = userRepository.findByUsername(principal.getName()).get();
+        newRent.setUser(user);
+        rentRepository.save(newRent);
+        mav.addObject("rentId", newRent.getId());
+        mav.addObject("rent", newRent);
+        double vehicleCostPerDay = vehicleRepository.findById(vehicleId).get().getCostPerDay();
+        double insuranceCostPerDay = insuranceRepository.findById(insuranceId).get().getCostPerDay();
+        long diffDays = (newRent.getDrop_date().getTime() - newRent.getPickup_date().getTime());
+        diffDays = TimeUnit.DAYS.convert(diffDays, TimeUnit.MILLISECONDS) + 1;
+        double totalCost = diffDays * (vehicleCostPerDay + insuranceCostPerDay);
+        
+        return mav;
+    }
+
+
 
 
 }

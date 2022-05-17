@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Confirmation</title>
+    <title>Booking Confirmation</title>
     <link rel="stylesheet" type="text/css"
           href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
     <link rel="stylesheet"
@@ -12,11 +12,12 @@
 </head>
 <body>
 <div class="container">
-    <h2>Confirm your Booking</h2>
+    <h2>Booking Confirmed</h2>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-    <form th:action="@{/createBooking}" method="POST">
+    <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
+    <form>
         <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
         <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
         <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
@@ -64,7 +65,6 @@
             </tr>
             </tbody>
         </table>
-        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Book">
     </form>
 </div>
 

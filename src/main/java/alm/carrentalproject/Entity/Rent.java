@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,7 +32,8 @@ public class Rent {
 
 //    @NotNull(message = "Please choose a pickup time")
 //    @Column(nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalTime pickup_time;
+    @DateTimeFormat(pattern = "HH:mm:ss")
+    private Date pickup_time;
 
 //    @NotNull(message = "Please pick a drop date")
 //    @Column(nullable = false, columnDefinition = "TIMESTAMP")
@@ -40,9 +42,10 @@ public class Rent {
 
 //    @NotNull(message = "Please pick a drop time")
 //    @Column(nullable = false, columnDefinition = "TIMESTAMP")
-    private LocalTime drop_time;
+    @DateTimeFormat(pattern = "HH:mm:ss")
+    private Date drop_time;
 
-    private enum RENT_STATUS {
+    public enum RENT_STATUS {
         PENDING,
         COMPLETED,
         RENTED,

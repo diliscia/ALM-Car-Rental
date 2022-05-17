@@ -16,10 +16,11 @@
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-    <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
-    <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
-    <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
-    <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
+    <form th:action="@{/setVehicle}" method="GET">
+    <h4> Pickup Date: <input type="date" name="pickup_date" th:value="${pickup_date}"></h4>
+    <h4> Pickup Time: <input type="time" name="pickup_time" th:value="${pickup_time}"></h4>
+    <h4> Drop Date: <input type="date" name="drop_date" th:value="${drop_date}"></h4>
+    <h4> Drop Time: <input type="time" name="drop_time" th:value="${drop_time}"></h4>
     <table class="table table-bordered table-striped" id="vehicles-table">
         <thead>
         <tr>
@@ -42,13 +43,18 @@
             <td th:text="${vehicle.costPerDay}"></td>
             <td th:text="${vehicle.status}"></td>
             <td th:text="${vehicle.category}"></td>
-            <td>
-                <a th:href="@{/selectVehicle/}" name="vehicleId" class="btn btn-info"
-                type="hidden" th:value="${vehicleId}">Select</a>
+            <td th:text="${vehicle.id}"></td>
+<!--                <a th:href="@{/setVehicle(vehicleId=${vehicle.id})}" name="vehicleId" class="btn btn-info">Select</a>-->
+<!--                <form th:action="@{/setVehicle/}">-->
+<!--                    <button class="btn btn-primary" type="submit" th:name="vehicleId" th:value="${vehicle.id}">Select</button>-->
+<!--                </form>-->
+                <button class="btn btn-primary" type="submit"  >Select</button>
             </td>
         </tr>
         </tbody>
+
     </table>
+    </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>

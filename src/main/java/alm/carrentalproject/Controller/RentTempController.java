@@ -119,6 +119,12 @@ public class RentTempController {
         return mav;
     }
 
+//    @GetMapping("/selectVehicle")
+//    public String selectVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
+//        redirAttrs.addFlashAttribute("success", "Vehicle selected successfully!!");
+//        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+//        return"redirect:/insurances";
+//    }
 
 //    @PostMapping("/setVehicle")
 //    public String setVehicle(@RequestParam Long vehicleId, Vehicle vehicle, BindingResult result, Principal principal) {

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;height: auto;min-height: 100vh;box-sizing: border-box !important;">
 <head style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
     <meta charset="UTF-8" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
@@ -500,7 +500,19 @@
 			line-height:150% !important;
 		}
 
-}</style></head>
+}
+
+body {
+    font-family:'arial';
+}
+
+#checkout-form input,
+#checkout-form button {
+display:block;
+margin:12px;
+}
+</style>
+</head>
 <body data-template-page-bg style="background:#F7F7F7 none no-repeat center/cover;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;height: auto;width: 100%;position: relative;background-color: #F7F7F7;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;min-height: 100vh;box-sizing: border-box !important;margin: 0 !important;padding: 0 !important;">
 <div class="wrapper" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;height: auto;min-height: 100vh;display: flex;flex-direction: column;box-sizing: border-box !important;">
     <div class="templateSection templateHeader" style="background:transparent none no-repeat center/cover;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;display: flex;flex-shrink: 0;justify-content: center;padding-right: 0px;padding-left: 0px;background-color: transparent;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 54px;padding-bottom: 0;box-sizing: border-box !important;">
@@ -524,44 +536,55 @@
 
 
                 </div>
-            </div><div class="mcnImageBlock mcnImageBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
+            </div>
+
+
+
+
+<!-- Stripe -->
+                <div style="margin-left: 306px">
+                    <form action ="/charge" method="POST" id="checkout-form">
+                        <input type="hidden" th:value="${amount}" name="amount">
+                        <input type="hidden" th:value="${userId}" name="userId">
+                        <div style="margin-right:320px; margin-left: -65px">
+                            <div class="mcnImageBlock mcnImageBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
+                                <div class="mcnImageContent" style="display: flex;padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;justify-content: center;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
+                                    <img alt="" src="https://mcusercontent.com/d37e2a50e5a193da76acd0827/images/9127dc12-c538-442f-8f6b-b453d75044ee.png" width="130.72" style="max-width: 100%;align-self: center;flex: 0 0 auto;border: 1px none;border-radius: 0%;box-shadow: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;height: auto;outline: none;text-decoration: none;vertical-align: bottom;box-sizing: border-box !important;" class="mcnImage"><span style="font-family:'arial', fantasy; margin-top: 13px; font-size: 35px" th:text="${amount/100}"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script
+                            src='https://checkout.stripe.com/checkout.js'
+                            class='stripe-button'
+                            th:attr='data-key=${stripePublicKey},
+                                     data-amount=${amount},
+                                     data-currency=${currency}',
+                            data-name="Techi-Primers"
+                            data-description='techi primers checkout'
+                            data-image='https://res.cloudinary.com/techiprimer/image/upload/v1620403269/Untitled_design_11_gpcde7.png'
+                            data-locale='auto'
+                            data-zip-code='false'
+                        ></script>
+
+                    </form>
+                </div>
+
+
+
+
+
+<div class="mcnImageBlock mcnImageBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
                 <div class="mcnImageContent" style="display: flex;padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;justify-content: center;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
 
 
-                    <img alt="" src="https://mcusercontent.com/d37e2a50e5a193da76acd0827/images/9127dc12-c538-442f-8f6b-b453d75044ee.png" width="130.72" style="max-width: 100%;align-self: center;flex: 0 0 auto;border: 1px none;border-radius: 0%;box-shadow: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;height: auto;outline: none;text-decoration: none;vertical-align: bottom;box-sizing: border-box !important;" class="mcnImage">
+                    <img alt="" src="https://mcusercontent.com/d37e2a50e5a193da76acd0827/images/262581d0-0c7f-45e0-8cfd-b59745d4d680.png" width="187.2" style="max-width: 100%;align-self: center;flex: 0 0 auto;box-shadow: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;border: 0;height: auto;outline: none;text-decoration: none;vertical-align: bottom;box-sizing: border-box !important;" class="mcnImage">
+
+
                 </div>
             </div>
-<!-- Stripe -->
-<div style="margin left:306px">
-    <form action="/charge" method='POST' id="checkout-form">
-        <input type='hidden' th:value='{$amount}' name='amount'>
-        <input type='hidden' th:value='{systemUserId}' name='systemUserId'>
-        <input type='hidden' th:value='{systemUserId}' name='systemUserId'>
 
-        <div style="margin-right:320px; margin-left: -65px">
-            <div class="mcnImageBlock mcnImageBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
-                <div class="mcnImageContent" style="display: flex;padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;justify-content: center;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
-                   <img alt="" src="https://mcusercontent.com/d37e2a50e5a193da76acd0827/images/262581d0-0c7f-45e0-8cfd-b59745d4d680.png" width="187.2" style="max-width: 100%;align-self: center;flex: 0 0 auto;box-shadow: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;border: 0;height: auto;outline: none;text-decoration: none;vertical-align: bottom;box-sizing: border-box !important;" class="mcnImage">
-                </div>
-            </div>
-        </div>
-        <script
-                src="https://checkout.stripe.com/checkout.js"
-                class="stripe-button"
-                th:attr='data-key=${stripePublicKey},
-                         data-amount=${amount},
-                         data-currency=${currency}',
-                data-name="2 widgets"
-                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                data-locale="auto"
-                data-zip-code="false">
-        </script>
-    </form>
-</div>
-<!-- Stripe -->
-
-
-<div class="mcnFollowBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
+                <div class="mcnFollowBlockInner" style="padding: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
                 <div style="display: flex;flex-direction: row;justify-content: center;padding-left: 9px;padding-right: 9px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
                     <div class="mcnFollowContent" style="display: flex;flex-direction: row;justify-content: center;flex: 1 1 auto;flex-wrap: wrap;padding-top: 9px;padding-left: 9px;padding-right: 9px;padding-bottom: 5px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box !important;">
 

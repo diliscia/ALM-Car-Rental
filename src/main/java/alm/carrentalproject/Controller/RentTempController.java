@@ -97,7 +97,7 @@ public class RentTempController {
         return mav;
     }
 
-    @PostMapping("/createBooking")
+    @PostMapping("/user/createBooking")
     public ModelAndView createBooking(@RequestParam("pickup_date") String pickup_date,
                                 @RequestParam("pickup_time") String pickup_time,
                                 @RequestParam("drop_date") String drop_date,

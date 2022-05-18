@@ -16,7 +16,7 @@
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-    <form th:action="@{/createBooking}" method="POST">
+    <form th:action="@{/user/createBooking}" method="POST">
         <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
         <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
         <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>

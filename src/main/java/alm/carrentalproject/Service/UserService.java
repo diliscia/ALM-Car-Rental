@@ -1,7 +1,6 @@
 package alm.carrentalproject.Service;
 
 import alm.carrentalproject.Entity.User;
-import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class UserService implements UserDetailsService {
 
     public ModelAndView listUsers() {
         ModelAndView mav = new ModelAndView("listUser");
-        List<User> userList = userRepository.findAll();
+        List<User> userList = userRepository.listOfClient();
         mav.addObject("userList", userList);
         return mav;
     }

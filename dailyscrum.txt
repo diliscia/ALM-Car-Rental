@@ -213,3 +213,44 @@
 - Research on payment process (Stripe for example) 
 3. Need assistance / figure things out
 - How we can implement backward wizard
+
+*********** 2022-05-18  ************
+
+2022/05/18 Marcelo
+1. Done / not done since last scrum:
+- Continue work with Ali in the wizard (done)
+- Learn how to and try to implement Stripe integration in the project (done)
+- Display billing view on client side (not done)
+- Reasearch on update/add image to web page (not done)
+- Research to include images from S3 (not done)
+2. To do until next Scrum:
+- Display billing view on client side
+- Try to succesfully implement Stripe integration in the project
+- Work on web site pages layout (CSS, Bootstrap) 
+3. Need assistance / figure things out
+- How to make the Stripe work (charge page is not loading)
+
+2022/05/18 Ly
+1. Done / not done since last scrum:
+- Continue working with Ali on the wizard (done)
+- Research on payment process (Stripe for example) (done)
+- Learn how to and try to implement Stripe integration in the project (done) 
+- Continue adding more validation on other attributes from different entities (not done)
+2. To do until next Scrum:
+- Try to succesfully implement Stripe integration in the project
+- Implement filter on the vehicle list
+- Work on web site pages layout (CSS, Bootstrap) 
+3. Need assistance / figure things out
+- How to filter the vehicle
+
+2022/05/18 Alireza
+1. Done / not done since last scrum:
+- Continue on implementing the rent wizard (done)
+- Research on payment process (Stripe for example) (done)
+- Learn how to and try to implement Stripe integration in the project (done) 
+2. To do until next Scrum:
+- Try to succesfully implement Stripe integration in the project 
+- Work on web site pages layout (CSS, Bootstrap) 
+- Working on statistics page
+3. Need assistance / figure things out
+- How can we implement backward wizard

@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface RentRepository extends JpaRepository<Rent,Long> {
 
-    @Query("Select v from Vehicle v Where v.status='AVAILABLE' ")
-    public List<Vehicle> availableVehicles();
+
 }

@@ -92,14 +92,18 @@ public class RentTempController {
                                     @RequestParam("pickup_time") String pickup_time,
                                     @RequestParam("drop_date") String drop_date,
                                     @RequestParam("drop_time") String drop_time,
-                                    ModelMap modelMap) {
+                                    ModelMap modelMap) throws ParseException {
         // write your code to save details
         modelMap.put("pickup_date", pickup_date);
         modelMap.put("pickup_time", pickup_time);
         modelMap.put("drop_date", drop_date);
         modelMap.put("drop_time", drop_time);
         ModelAndView mav = new ModelAndView("client-vehicles");
-        List<Vehicle> vehicleList = vehicleRepository.findAll();
+
+        List<Vehicle> vehicleList = vehicleRepository.availableVehicles(
+                new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date),
+                new SimpleDateFormat("yyyy-MM-dd").parse(drop_date));
+
         mav.addObject("vehicle", vehicleList);
         return mav;
     }

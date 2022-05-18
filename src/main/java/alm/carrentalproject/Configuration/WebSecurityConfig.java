@@ -24,9 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/contact").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/reader/**").hasAnyRole("ADMIN", "CLIENT")
+                .antMatchers("/user/**").hasAnyRole("ADMIN", "CLIENT")
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/login")
@@ -43,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
+        http.csrf().disable();
     }
 
     @Override

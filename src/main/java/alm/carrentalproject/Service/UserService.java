@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -61,5 +63,12 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    public ModelAndView listUsers() {
+        ModelAndView mav = new ModelAndView("listUser");
+        List<User> userList = userRepository.listOfClient();
+        mav.addObject("userList", userList);
+        return mav;
     }
 }

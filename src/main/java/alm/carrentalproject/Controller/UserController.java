@@ -1,6 +1,7 @@
 package alm.carrentalproject.Controller;
 
 import alm.carrentalproject.Entity.User;
+import alm.carrentalproject.Entity.Vehicle;
 import alm.carrentalproject.Service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -46,8 +48,8 @@ public class UserController {
         return "login";
     }
 
-//    @PostMapping("/logout")
-//    public String logout() {
-//        return "redirect:/";
-//    }
+    @GetMapping("/admin/listUsers")
+    public ModelAndView listUsers() {
+        return userService.listUsers();
+    }
 }

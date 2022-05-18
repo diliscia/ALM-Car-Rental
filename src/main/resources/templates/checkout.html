@@ -7,6 +7,7 @@
 <body>
 <form action='/charge' method='POST' id='checkout-form'>
     <input type='hidden' th:value='${amount}' name='amount' />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <label>Price:<span th:text='${amount/100}' /></label>
     <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
     <script
@@ -15,10 +16,10 @@
             th:attr='data-key=${stripePublicKey},
          data-amount=${amount},
          data-currency=${currency}'
-            data-name='Baeldung'
-            data-description='Spring course checkout'
+            data-name='ALM Car Rental'
+            data-description='Your place of trust'
             data-image
-                    ='https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'
+                    ='https://projectalmbucket.s3.amazonaws.com/logo/alm1.png'
             data-locale='auto'
             data-zip-code='false'>
     </script>

@@ -21,12 +21,13 @@
     <h4> Pickup Time: <input type="time" name="pickup_time" th:value="${pickup_time}"></h4>
     <h4> Drop Date: <input type="date" name="drop_date" th:value="${drop_date}"></h4>
     <h4> Drop Time: <input type="time" name="drop_time" th:value="${drop_time}"></h4>
-    <table class="table table-bordered table-striped" id="vehicles-table">
+    <table class="table table-bordered table-striped" id="vehicle-table">
         <thead>
         <tr>
+            <th>Image</th>
             <th>Model</th>
             <th>Year</th>
-            <th>Mileage</th>
+            <th>km/L</th>
             <th>Capacity</th>
             <th>Cost per Day</th>
             <th>Status</th>
@@ -36,6 +37,9 @@
         </thead>
         <tbody >
         <tr th:each="vehicle: ${vehicle}">
+            <td>
+            <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
+            </td>
             <td th:text="${vehicle.modelName}"></td>
             <td th:text="${vehicle.modelYear}"></td>
             <td th:text="${vehicle.mileage}"></td>
@@ -56,10 +60,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
 <script>
         $(document).ready(function() {
-            $("#vehicles-table").DataTable({
-                'aoColumnDef': [{
+            $("#vehicle-table").DataTable({
+                'aoColumnDefs': [{
                     'bSortable': false,
-                    'aTarget': [-1]
+                    'aTargets': [-1],
                     }]
             });
         })

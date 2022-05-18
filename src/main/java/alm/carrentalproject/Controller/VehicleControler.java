@@ -76,11 +76,4 @@ public class VehicleControler {
     }
 
 
-//    @GetMapping("/selectVehicle")
-//    public ModelAndView showUpdateForm(@RequestParam Long vehicleId) {
-//        ModelAndView mav = new ModelAndView("client-vehicle");
-//        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
-//        mav.addObject("vehicle", vehicle);
-//        return mav;
-//    }
 }

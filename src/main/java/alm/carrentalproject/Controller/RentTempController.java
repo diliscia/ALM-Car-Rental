@@ -2,25 +2,18 @@ package alm.carrentalproject.Controller;
 
 import alm.carrentalproject.Entity.*;
 import alm.carrentalproject.Repository.*;
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
-import com.stripe.model.Price;
-import com.stripe.model.checkout.Session;
-import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,54 +33,12 @@ public class RentTempController {
     @Autowired
     private BillingRepository billingRepository;
 
-//    @GetMapping("/addTempRent")
-//    public ModelAndView showRentPage(){
-//        ModelAndView mav=new ModelAndView("addTempRent");
-//        Rent newRent=new Rent();
-//        mav.addObject("rent",newRent);
-//        return mav;
-//    }
-
-//    @PostMapping("/saveTempRent")
-//    public String addTempRent(@Valid RentTemp rent, BindingResult result, Model model, Principal principal) {
-//        // TODO: validation and error display
-//        if (result.hasErrors()) {
-//            return "addTempRent";
-//        }
-//        // TODO: author not found exception
-//        Long rentId = rentTempRepository.save(rent).getId();
-//        model.addAttribute("rentId", rentId);
-//        return "redirect:/client-vehicles?rentId=" + rentId.toString();
-//    }
-
-
-//    @GetMapping("/client-vehicles")
-//    public String selectVehicle(@RequestParam Long rentTempId, Model model, RedirectAttributes redirAttrs) {
-//        redirAttrs.addFlashAttribute("success", "Vehicle selected successfully!!");
-//        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
-//        return"redirect:/insurances";
-//    }
-
     @GetMapping("/getDateTime")
     public String getDateTime() {
         return "addDateTime";
     }
 
-//    @GetMapping("/saveDateTime")                     // it only support port method
-//    public String saveDetails(@RequestParam("pickup_date") String pickup_date,
-//                              @RequestParam("pickup_time") String pickup_time,
-//                              @RequestParam("drop_date") String drop_date,
-//                              @RequestParam("drop_time") String drop_time,
-//                              ModelMap modelMap) {
-//        // write your code to save details
-//        modelMap.put("pickup_date", pickup_date);
-//        modelMap.put("pickup_time", pickup_time);
-//        modelMap.put("drop_date", drop_date);
-//        modelMap.put("drop_time", drop_time);
-//        return "/client-vehicles";           // welcome is view name. It will call welcome.jsp
-//    }
-
-    @GetMapping("/saveDateTime")                     // it only support port method
+    @GetMapping("/saveDateTime")
     public ModelAndView saveDetails(@RequestParam("pickup_date") String pickup_date,
                                     @RequestParam("pickup_time") String pickup_time,
                                     @RequestParam("drop_date") String drop_date,
@@ -150,14 +101,7 @@ public class RentTempController {
         return mav;
     }
 
-//    @GetMapping("/selectVehicle")
-//    public String selectVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
-//        redirAttrs.addFlashAttribute("success", "Vehicle selected successfully!!");
-//        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
-//        return"redirect:/insurances";
-//    }
-
-    @PostMapping("/createBooking")
+    @PostMapping("/user/createBooking")
     public ModelAndView createBooking(@RequestParam("pickup_date") String pickup_date,
                                 @RequestParam("pickup_time") String pickup_time,
                                 @RequestParam("drop_date") String drop_date,
@@ -187,8 +131,6 @@ public class RentTempController {
         diffDays = TimeUnit.DAYS.convert(diffDays, TimeUnit.MILLISECONDS) + 1;
         double totalCost = diffDays * (vehicleCostPerDay + insuranceCostPerDay);
 
-        //long miliseconds = System.currentTimeMillis();
-        //Date todayDate = new Date(miliseconds);
         Date todayDate = new Date();
         Calendar c = Calendar.getInstance();
         c.setTime(todayDate);

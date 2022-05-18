@@ -14,12 +14,10 @@
 <img src='https://projectalmbucket.s3.amazonaws.com/logo/alm2.png' alt="ALM Logo" style="width: 200px;">
 <h1 class="text-center">ALM | CAR RENTAL</h1>
 <h3 class="text-center">Hello, welcome to ALM Car Rental!</h3>
-<!--<p th:text="'Hello, welcome to ALM Car Rental!'" />-->
 <hr/>
-
-<a th:href="@{/getDateTime}"  class="btn btn-primary mb-2">Start your Rent</a>
-<a th:href="@{/admin/vehicles}"  class="btn btn-primary mb-2">Go to List of Vehicles</a>
-<a th:href="@{/client-vehicles}"  class="btn btn-primary mb-2">Go to Client Vehicles</a>
+<a th:href="@{/getDateTime}"  class="btn btn-primary mb-2">Book a Vehicle</a>
+<a th:href="@{/admin/vehicles}"  class="btn btn-primary mb-2">List of Vehicles</a>
+<a th:href="@{/admin/listUsers}"  class="btn btn-primary mb-2">List of Users</a>
 <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
 </body>    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
 

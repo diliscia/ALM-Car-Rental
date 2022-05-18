@@ -205,52 +205,13 @@ public class RentTempController {
         return mav;
     }
 
-//    @Value("${STRIPE_PUBLIC_KEY}")
-    private String stripePublicKey=
-"sk_test_51Kyev5D6hSMxeUqVL4Cluwn4bewVKGD43bRftb5WFpLNabY0B0Dsm6b8P36ZLnx1Zx04i1lZJ405Vn5AHsCK9iQz00oncvVoSM";
-
-    @RequestMapping("/checkout")
-    public String checkout(Model model) {
-        model.addAttribute("amount", 50 * 100); // in cents
-        model.addAttribute("stripePublicKey", stripePublicKey);
-        model.addAttribute("currency", ChargeRequest.Currency.USD);
-        return "checkout";
-    }
-
     @GetMapping("/makepayment")
     public ModelAndView MakePayment(@RequestParam("billId") Long billId, ModelMap modelMap) throws StripeException {
         ModelAndView mav = new ModelAndView("payment");
         modelMap.put("billId", billId);
         Billing bill = billingRepository.findById(billId).get();
         mav.addObject("bill",bill);
-
-        Stripe.apiKey =stripePublicKey;
-        Price aPrice=new Price();
-//        aPrice.se
-
-        SessionCreateParams params =
-                SessionCreateParams.builder()
-                        .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
-//                        .setMode(SessionCreateParams.Mode.SUBSCRIPTION)
-                        .setMode(SessionCreateParams.Mode.PAYMENT)
-                        .setSuccessUrl("https://example.com/success?session_id={CHECKOUT_SESSION_ID}")
-                        .setCancelUrl("https://example.com/cancel")
-                        .addLineItem(
-                                SessionCreateParams.LineItem.builder()
-                                        .setQuantity(1L)
-                                        .setPrice(aPrice.getId())//"price_1HKiSf2eZvKYlo2CxjF9qwbr"
-                                        .setCurrency(String.valueOf(ChargeRequest.Currency.USD))
-                                        .setAmount((long) bill.getAmount()*100)
-                                        .setName("ALM payment")
-
-                                        .build())
-                        .build();
-
-        Session session = Session.create(params);
-
         return mav;
     }
-
-
 
 }

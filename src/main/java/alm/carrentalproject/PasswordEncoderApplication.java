@@ -2,10 +2,7 @@ package alm.carrentalproject;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Calendar;
-import java.util.Date;
-
-public class PasswordEncoder {
+public class PasswordEncoderApplication {
 
 
     public static void main(String[] args) {

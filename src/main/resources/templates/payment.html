@@ -18,51 +18,51 @@
     <hr/>
     <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
     <form action="/makepayment" method="get" >
-        <h4> Pickup Date: <span th:text="${rent.pickup_date}"></span></h4>
-        <h4> Pickup Time: <span th:text="${rent.pickup_time}"></span></h4>
-        <h4> Drop Date: <span th:text="${rent.drop_date}"></span></h4>
-        <h4> Drop Time: <span  th:text="${rent.drop_time}"> </span></h4>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Mileage</th>
-                <th>Capacity</th>
-                <th>Cost per Day</th>
-                <th>Status</th>
-                <th>Category</th>
-            </tr>
-            </thead>
-            <tbody >
-            <tr th:each="vehicle: ${vehicle}">
-                <td th:text="${vehicle.modelName}"></td>
-                <td th:text="${vehicle.modelYear}"></td>
-                <td th:text="${vehicle.mileage}"></td>
-                <td th:text="${vehicle.capacity}"></td>
-                <td th:text="${vehicle.costPerDay}"></td>
-                <td th:text="${vehicle.status}"></td>
-                <td th:text="${vehicle.category}"></td>
-            </tr>
-            </tbody>
+<!--        <h4> Pickup Date: <span th:text="${rent.pickup_date}"></span></h4>-->
+<!--        <h4> Pickup Time: <span th:text="${rent.pickup_time}"></span></h4>-->
+<!--        <h4> Drop Date: <span th:text="${rent.drop_date}"></span></h4>-->
+<!--&lt;!&ndash;        <h4> Drop Time: <span  th:text="${rent.drop_time}"> </span></h4>&ndash;&gt;-->
+<!--        <table class="table table-bordered table-striped">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Model</th>-->
+<!--                <th>Year</th>-->
+<!--                <th>Mileage</th>-->
+<!--                <th>Capacity</th>-->
+<!--                <th>Cost per Day</th>-->
+<!--                <th>Status</th>-->
+<!--                <th>Category</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody >-->
+<!--            <tr th:each="vehicle: ${vehicle}">-->
+<!--                <td th:text="${vehicle.modelName}"></td>-->
+<!--                <td th:text="${vehicle.modelYear}"></td>-->
+<!--                <td th:text="${vehicle.mileage}"></td>-->
+<!--                <td th:text="${vehicle.capacity}"></td>-->
+<!--                <td th:text="${vehicle.costPerDay}"></td>-->
+<!--                <td th:text="${vehicle.status}"></td>-->
+<!--                <td th:text="${vehicle.category}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
 
-        </table>
-        <table class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Cost per Day</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="insurance: ${insurance}">
-                <td th:text="${insurance.name}"></td>
-                <td th:text="${insurance.type}"></td>
-                <td th:text="${insurance.costPerDay}"></td>
-            </tr>
-            </tbody>
-        </table>
+<!--        </table>-->
+<!--        <table class="table table-bordered table-striped">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Name</th>-->
+<!--                <th>Type</th>-->
+<!--                <th>Cost per Day</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="insurance: ${insurance}">-->
+<!--                <td th:text="${insurance.name}"></td>-->
+<!--                <td th:text="${insurance.type}"></td>-->
+<!--                <td th:text="${insurance.costPerDay}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
         <table class="table table-bordered table-striped" id="billing-table">
             <thead>
             <tr>

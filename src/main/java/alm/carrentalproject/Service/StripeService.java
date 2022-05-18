@@ -1,6 +1,5 @@
 package alm.carrentalproject.Service;
 
-
 import alm.carrentalproject.Entity.ChargeRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.AuthenticationException;
@@ -18,14 +17,13 @@ import java.util.Map;
 @Service
 public class StripeService {
 
-//    @Value("${STRIPE_SECRET_KEY}")
-    private String secretKey="pk_test_51Kyev5D6hSMxeUqVEyr9ANKzw6rXi8wMSANQNQm5C6qAFNHEZUP1sTZC0QWFIF8UB8z8iw0Kp6DDRmt5mwI4xWC900Vy9XGW3v";
+//    @Value()
+    private String secretKey = "sk_test_51Kyev5D6hSMxeUqVL4Cluwn4bewVKGD43bRftb5WFpLNabY0B0Dsm6b8P36ZLnx1Zx04i1lZJ405Vn5AHsCK9iQz00oncvVoSM";
 
     @PostConstruct
     public void init() {
         Stripe.apiKey = secretKey;
     }
-
     public Charge charge(ChargeRequest chargeRequest)
             throws StripeException {
         Map<String, Object> chargeParams = new HashMap<>();
@@ -36,4 +34,3 @@ public class StripeService {
         return Charge.create(chargeParams);
     }
 }
-

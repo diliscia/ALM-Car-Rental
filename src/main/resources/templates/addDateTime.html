@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -16,9 +16,9 @@
 </head>
 
 <body class="grey lighten-4">
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 
-<nav class="white z-depth-0" th:replace="fragment/header_anonymous :: header">
-</nav>
 <div class="container">
   <h3 class="brand-text">Make a Rent</h3>
 
@@ -39,7 +39,7 @@
     <button class="btn btn-primary" type="submit"  >Choose Vehicle</button>
   </form>
   </hr>
-  <a th:href="@{/index}">Cancel the Operation</a>
+  <a th:href="@{/}">Cancel the Operation</a>
 </div>
 </body>
 </html>

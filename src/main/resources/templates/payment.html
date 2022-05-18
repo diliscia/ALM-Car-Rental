@@ -17,7 +17,7 @@
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
     <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
-    <form action="/makepayment" method="get" >
+    <form action="/checkout" method="get" >
 <!--        <h4> Pickup Date: <span th:text="${rent.pickup_date}"></span></h4>-->
 <!--        <h4> Pickup Time: <span th:text="${rent.pickup_time}"></span></h4>-->
 <!--        <h4> Drop Date: <span th:text="${rent.drop_date}"></span></h4>-->

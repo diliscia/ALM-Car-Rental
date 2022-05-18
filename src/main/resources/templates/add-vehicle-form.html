@@ -23,6 +23,8 @@
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     </hr>
     <form th:action="@{/admin/saveVehicle}" th:object="${vehicle}" method="POST">
+        <label >ImageURL</label>
+        <input type="text" th:field="*{imageURL}" ><br>
         <label >Model Name</label>
         <input type="text" th:field="*{modelName}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>

@@ -76,4 +76,7 @@ public class Vehicle {
     @Column(nullable = false)
     @DecimalMax("300.00") @DecimalMin("10.00")
     private double costPerDay;
+
+    @NotEmpty(message = "You must submit an image!!")
+    private String imageURL;
 }

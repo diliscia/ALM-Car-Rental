@@ -17,7 +17,7 @@
     <a th:href="@{/admin/addVehicleForm}" class="btn btn-primary mb-2">Add Vehicle</a>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
-    <table class="table table-bordered table-striped" id="employee-table">
+    <table class="table table-bordered table-striped" id="vehicle-table">
         <thead>
         <tr>
             <th>Image</th>
@@ -35,7 +35,9 @@
         </thead>
         <tbody>
         <tr th:each="vehicle: ${vehicle}">
-            <td th:text="${vehicle.imageURL}"></td>
+            <td>
+                <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
+            </td>
             <td th:text="${vehicle.modelName}"></td>
             <td th:text="${vehicle.vin}"></td>
             <td th:text="${vehicle.plate}"></td>
@@ -57,13 +59,13 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
 <script>
         $(document).ready(function() {
-            $("#employee-table").DataTable({
-                'aoColumnDef': [{
+            $("#vehicle-table").DataTable({
+                'aoColumnDefs': [{
                     'bSortable': false,
-                    'aTarget': [-1]
+                    'aTargets': [-1,-11]
                     }]
             });
         })
-    </script>
+     </script>
 </body>
 </html>

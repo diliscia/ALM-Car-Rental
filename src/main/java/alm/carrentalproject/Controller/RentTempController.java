@@ -185,4 +185,9 @@ public class RentTempController {
         mav.addObject("list_bills", bills);
         return mav;
     }
+
+    @GetMapping("/statisticss")
+    public String test() {
+        return "statistics";
+    }
 }

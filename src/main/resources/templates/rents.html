@@ -19,27 +19,34 @@
         <thead>
         <tr>
             <th>pickup date</th>
-            <th>pickup time</th>
+<!--            <th>pickup time</th>-->
             <th>drop date</th>
-            <th>drop time</th>
-            <th>status</th>
+<!--            <th>drop time</th>-->
+<!--            <th>status</th>-->
             <th>username</th>
             <th>Model Name</th>
-            <th>Action</th>
+            <th>Year</th>
+            <th>km/L</th>
+            <th>Cost per Day</th>
+<!--            <th>Image</th>-->
         </tr>
         </thead>
         <tbody>
         <tr th:each="rent: ${rents}">
-            <td th:text="${rent.pickup_date}"></td>
-            <td th:text="${rent.pickup_time}"></td>
-            <td th:text="${rent.drop_date}"></td>
-            <td th:text="${rent.pickup_time}"></td>
-            <td th:text="${rent.status}"></td>
+            <td th:text="${#dates.format(rent.pickup_date,'yyyy-MM-dd')}"></td>
+<!--            <td th:text="${rent.pickup_time}"></td>-->
+            <td th:text="${#dates.format(rent.drop_date,'yyyy-MM-dd')}"></td>
+<!--            <td th:text="${rent.pickup_time}"></td>-->
+<!--            <td th:text="${rent.status}"></td>-->
             <td th:text="${rent.user.username}"></td>
             <td th:text="${rent.vehicle.modelName}"></td>
-            <td>
-                <a th:href="@{/admin/updateRent(rentId=${rent.id})}" class="btn btn-info">Update</a>
-            </td>
+            <td th:text="${rent.vehicle.modelYear}"></td>
+            <td th:text="${rent.vehicle.mileage}"></td>
+            <td th:text="${rent.vehicle.costPerDay}"></td>
+<!--            <td><img th:src="${rent.vehicle.imageURL}" style="width:auto; display: block; margin:auto;"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/admin/updateRent(rentId=${rent.id})}" class="btn btn-info">Update</a>-->
+<!--            </td>-->
         </tr>
         </tbody>
     </table>

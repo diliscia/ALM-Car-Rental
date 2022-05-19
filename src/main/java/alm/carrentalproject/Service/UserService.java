@@ -1,7 +1,11 @@
 package alm.carrentalproject.Service;
 
+import alm.carrentalproject.Entity.Insurance;
 import alm.carrentalproject.Entity.User;
+import alm.carrentalproject.Entity.Vehicle;
+import alm.carrentalproject.Repository.InsuranceRepository;
 import alm.carrentalproject.Repository.UserRepository;
+import alm.carrentalproject.Repository.VehicleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +14,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -23,6 +29,10 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
+    @Autowired
+    private VehicleRepository vehicleRepository;
+    @Autowired
+    private InsuranceRepository insuranceRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -67,6 +77,30 @@ public class UserService implements UserDetailsService {
 
     public ModelAndView listUsers() {
         ModelAndView mav = new ModelAndView("listUser");
+        List<User> userList = userRepository.listOfClient();
+        mav.addObject("userList", userList);
+        return mav;
+    }
+
+    public ModelAndView listUsersForBooking(@RequestParam("pickup_date") String pickup_date,
+                                            @RequestParam("pickup_time") String pickup_time,
+                                            @RequestParam("drop_date") String drop_date,
+                                            @RequestParam("drop_time") String drop_time,
+                                            @RequestParam("vehicleId") Long vehicleId,
+                                            @RequestParam("insuranceId") Long insuranceId,
+                                            ModelMap modelMap) {
+        modelMap.put("pickup_date", pickup_date);
+        modelMap.put("pickup_time", pickup_time);
+        modelMap.put("drop_date", drop_date);
+        modelMap.put("drop_time", drop_time);
+        modelMap.put("vehicleId", vehicleId);
+        modelMap.put("insuranceId", insuranceId);
+        ModelAndView mav = new ModelAndView("listUser");
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+        mav.addObject("vehicle", vehicle);
+        Insurance insurance = insuranceRepository.findById(insuranceId).get();
+        mav.addObject("insurance", insurance);
+
         List<User> userList = userRepository.listOfClient();
         mav.addObject("userList", userList);
         return mav;

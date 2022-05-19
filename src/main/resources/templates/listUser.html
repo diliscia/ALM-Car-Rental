@@ -17,7 +17,60 @@
   <a th:href="@{/register}" class="btn btn-primary mb-2">Add User</a>
   <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
   <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+  <form th:action="@{/user/createBookingByAdmin}" method="POST">
+    <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
+    <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
+    <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
+    <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
+    <input type="hidden" name="vehicleId" th:value="${vehicleId}">
+    <input type="hidden" name="insuranceId" th:value="${insuranceId}">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Mileage</th>
+        <th>Capacity</th>
+        <th>Cost per Day</th>
+        <th>Status</th>
+        <th>Category</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr th:each="vehicle: ${vehicle}">
+        <td>
+          <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
+        </td>
+        <td th:text="${vehicle.modelName}"></td>
+        <td th:text="${vehicle.modelYear}"></td>
+        <td th:text="${vehicle.mileage}"></td>
+        <td th:text="${vehicle.capacity}"></td>
+        <td th:text="${vehicle.costPerDay}"></td>
+        <td th:text="${vehicle.status}"></td>
+        <td th:text="${vehicle.category}"></td>
+      </tr>
+      </tbody>
+
+    </table>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Cost per Day</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="insurance: ${insurance}">
+        <td th:text="${insurance.name}"></td>
+        <td th:text="${insurance.type}"></td>
+        <td th:text="${insurance.costPerDay}"></td>
+      </tr>
+      </tbody>
+    </table>
   <table class="table table-bordered table-striped" id="user-table">
+
     <thead>
     <tr>
       <th>Username</th>
@@ -48,11 +101,12 @@
       <td th:text="${user.province}"></td>
       <td th:text="${user.postalCode}"></td>
       <td>
-        <a th:href="@{/getDateTime(userId=${user.id})}" class="btn btn-info">Book a Vehicle</a>
+        <button class="btn btn-primary" type="submit" name="userId" th:value="${user.id}">Select</button>
       </td>
     </tr>
     </tbody>
   </table>
+  </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>

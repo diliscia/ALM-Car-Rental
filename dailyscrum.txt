@@ -254,3 +254,45 @@
 - Working on statistics page
 3. Need assistance / figure things out
 - How can we implement backward wizard
+
+*********** 2022-05-19  ************
+
+2022/05/19 Marcelo
+1. Done / not done since last scrum:
+- Display billing view on client side (not done)
+- Try to succesfully implement Stripe integration in the project (done)
+- Work on web site pages layout (CSS, Bootstrap) (done)
+- Succesfully setup S3, load images and use them in the website (done)
+2. To do until next Scrum:
+- Continue working on web site pages layout (CSS, Bootstrap) 
+- Work on navigation bars (client/admin) 
+3. Need assistance / figure things out
+- 
+
+2022/05/19 Ly
+1. Done / not done since last scrum:
+- Try to succesfully implement Stripe integration in the project (done)
+- Implement filter on the vehicle list (done)
+- Work on web site pages layout (CSS, Bootstrap) (not done)
+- Create admin view list of users (done)
+- Check and update validation and booking permision in website (done)
+2. To do until next Scrum:
+- Booking and billing view client side
+- Work on web site pages layout (CSS, Bootstrap) 
+- Implement Heroku
+- Admin create booking and assigning it to a user
+3. Need assistance / figure things out
+- Implementing Heroku
+- Booking and billing view client side
+
+2022/05/19 Alireza
+1. Done / not done since last scrum:
+- Implement filter on the vehicle list (done)
+- Try to succesfully implement Stripe integration in the project (done)
+- Work on web site pages layout (CSS, Bootstrap) 
+- Working on statistics page (not done)
+2. To do until next Scrum:
+- Working on statistics page
+- Booking and billing view admin side
+3. Need assistance / figure things out
+- Finding good tutorial about Hibernate SQL

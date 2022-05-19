@@ -177,4 +177,12 @@ public class RentTempController {
         mav.addObject("list_bills", bills);
         return mav;
     }
+
+    @GetMapping("/admin/bill_list")
+    public ModelAndView adminViewBills () {
+        ModelAndView mav = new ModelAndView("bill_list");
+        List<Billing> bills = billingRepository.findBillings();
+        mav.addObject("list_bills", bills);
+        return mav;
+    }
 }

@@ -16,4 +16,6 @@ public interface BillingRepository extends JpaRepository<Billing, Long> {
     @Query ("Select b from Billing b JOIN b.rent r JOIN r.user u WHERE u.id = :userId")
     List<Billing> findBillingList(@Param("userId") Long userId);
 
+    @Query ("Select b from Billing b JOIN b.rent r JOIN r.user u ")
+    List<Billing> findBillings();
 }

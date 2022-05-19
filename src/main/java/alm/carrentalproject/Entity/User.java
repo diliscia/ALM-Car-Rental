@@ -26,7 +26,7 @@ public class User implements UserDetails {
     @GeneratedValue
     private Long id;
 
-    private enum Role {
+    public enum Role {
         CLIENT,
         ADMIN
     }

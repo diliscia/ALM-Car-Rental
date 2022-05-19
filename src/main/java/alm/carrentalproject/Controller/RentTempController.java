@@ -110,6 +110,7 @@ public class RentTempController {
                                 @RequestParam("insuranceId") Long insuranceId,
                                 ModelMap modelMap, Principal principal) throws ParseException {
         ModelAndView mav = new ModelAndView("success_booking");
+        ModelAndView mav1 = new ModelAndView("listUser");
         Rent newRent = new Rent();
         newRent.setPickup_date(new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date));
         newRent.setPickup_time(new SimpleDateFormat("HH:mm").parse(pickup_time));
@@ -120,7 +121,12 @@ public class RentTempController {
         Insurance insurance = insuranceRepository.findById(insuranceId).get();
         newRent.setInsurance(insurance);
         newRent.setStatus(Rent.RENT_STATUS.PENDING);
+
         User user = userRepository.findByUsername(principal.getName()).get();
+        if (user.getRole() == User.Role.ADMIN) {
+            return mav;
+        }
+
         newRent.setUser(user);
         rentRepository.save(newRent);
         mav.addObject("rentId", newRent.getId());
@@ -146,6 +152,9 @@ public class RentTempController {
         bill.setIsPaid(Billing.Status.NOT_PAID);
         bill.setLate_fee(0);
         billingRepository.save(bill);
+
+        mav.addObject("vehicle", vehicle);
+        mav.addObject("insurance", insurance);
         mav.addObject("bill", bill);
 
         return mav;
@@ -160,4 +169,12 @@ public class RentTempController {
         return mav;
     }
 
+    @GetMapping("/user/userview-billlists")
+    public ModelAndView UserViewBills (Principal principal) {
+        ModelAndView mav = new ModelAndView("user_view_bills");
+        User user = userRepository.findByUsername(principal.getName()).get();
+        List<Billing> bills = billingRepository.findBillingList(user.getId());
+        mav.addObject("list_bills", bills);
+        return mav;
+    }
 }

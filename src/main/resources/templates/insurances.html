@@ -25,6 +25,7 @@
     <table class="table table-bordered table-striped" id="vehicles-table">
         <thead>
         <tr>
+            <th>Image</th>
             <th>Model</th>
             <th>Year</th>
             <th>Mileage</th>
@@ -36,6 +37,9 @@
         </thead>
         <tbody >
         <tr th:each="vehicle: ${vehicle}">
+            <td>
+                <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
+            </td>
             <td th:text="${vehicle.modelName}"></td>
             <td th:text="${vehicle.modelYear}"></td>
             <td th:text="${vehicle.mileage}"></td>

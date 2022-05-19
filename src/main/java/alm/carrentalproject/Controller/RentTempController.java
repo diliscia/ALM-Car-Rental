@@ -169,4 +169,12 @@ public class RentTempController {
         return mav;
     }
 
+    @GetMapping("/user/userview-billlists")
+    public ModelAndView UserViewBills (Principal principal) {
+        ModelAndView mav = new ModelAndView("user_view_bills");
+        User user = userRepository.findByUsername(principal.getName()).get();
+        List<Billing> bills = billingRepository.findBillingList(user.getId());
+        mav.addObject("list_bills", bills);
+        return mav;
+    }
 }

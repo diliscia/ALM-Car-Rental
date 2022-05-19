@@ -111,6 +111,10 @@ public class RentTempController {
                                 ModelMap modelMap, Principal principal) throws ParseException {
         ModelAndView mav = new ModelAndView("success_booking");
         ModelAndView mav1 = new ModelAndView("listUser");
+        modelMap.put("pickup_date", pickup_date);
+        modelMap.put("pickup_time", pickup_time);
+        modelMap.put("drop_date", drop_date);
+        modelMap.put("drop_time", drop_time);
         Rent newRent = new Rent();
         newRent.setPickup_date(new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date));
         newRent.setPickup_time(new SimpleDateFormat("HH:mm").parse(pickup_time));

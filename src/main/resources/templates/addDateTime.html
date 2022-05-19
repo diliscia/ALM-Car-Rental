@@ -26,16 +26,12 @@
   <form th:action="@{/saveDateTime}" method="GET">
 <!--    <label>Pick up Date</label>-->
 <!--    <input type="date" name="pickup_date"><br>-->
-    <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>
 <!--    <label>Pick up Time</label>-->
 <!--    <input type="time" name="pickup_time"><br>-->
-    <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>
 <!--    <label>Drop Date</label>-->
 <!--    <input type="date"  name="drop_date"><br>-->
-    <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>
 <!--    <label>Drop Time</label>-->
 <!--    <input type="time" name="drop_time"><br>-->
-    <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
 
     <table class="table table-bordered" id="date-time-table">
       <thead class="text-center">
@@ -48,9 +44,13 @@
       </thead>
       <tbody class="text-center">
       <td><input type="date" name="pickup_date"></td>
+<!--      <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>-->
       <td><input type="time"  name="pickup_time"></td>
+<!--      <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>-->
       <td><input type="date"  name="drop_date"></td>
+<!--      <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>-->
       <td><input type="time" name="drop_time"></td>
+<!--      <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>-->
       </tr>
       </tbody>
     </table>

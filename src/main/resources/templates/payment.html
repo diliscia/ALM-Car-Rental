@@ -11,7 +11,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<nav class="text-center" th:insert="fragment/header :: header"></nav>
 <div class="container">
     <h2>Booking Confirmed</h2>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
@@ -19,51 +18,68 @@
     <hr/>
     <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
     <form action="/checkout" method="get" >
-<!--        <h4> Pickup Date: <span th:text="${rent.pickup_date}"></span></h4>-->
-<!--        <h4> Pickup Time: <span th:text="${rent.pickup_time}"></span></h4>-->
-<!--        <h4> Drop Date: <span th:text="${rent.drop_date}"></span></h4>-->
-<!--&lt;!&ndash;        <h4> Drop Time: <span  th:text="${rent.drop_time}"> </span></h4>&ndash;&gt;-->
-<!--        <table class="table table-bordered table-striped">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Model</th>-->
-<!--                <th>Year</th>-->
-<!--                <th>Mileage</th>-->
-<!--                <th>Capacity</th>-->
-<!--                <th>Cost per Day</th>-->
-<!--                <th>Status</th>-->
-<!--                <th>Category</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody >-->
-<!--            <tr th:each="vehicle: ${vehicle}">-->
-<!--                <td th:text="${vehicle.modelName}"></td>-->
-<!--                <td th:text="${vehicle.modelYear}"></td>-->
-<!--                <td th:text="${vehicle.mileage}"></td>-->
-<!--                <td th:text="${vehicle.capacity}"></td>-->
-<!--                <td th:text="${vehicle.costPerDay}"></td>-->
-<!--                <td th:text="${vehicle.status}"></td>-->
-<!--                <td th:text="${vehicle.category}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
+        <table class="table table-bordered" id="date-time-table">
+            <thead class="text-center">
+            <tr>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Drop Date</th>
+                <th>Drop Time</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <td><input type="date" name="pickup_date" th:value="${pickup_date}" th:readonly="true"></td>
+            <td><input type="time" name="pickup_time" th:value="${pickup_time}" th:readonly="true"></td>
+            <td><input type="date" name="drop_date" th:value="${drop_date}" th:readonly="true"></td>
+            <td><input type="time" name="drop_time" th:value="${drop_time}" th:readonly="true"></td>
+            </tr>
+            </tbody>
+        </table>
+       <table class="table table-bordered table-striped">
 
-<!--        </table>-->
-<!--        <table class="table table-bordered table-striped">-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>Name</th>-->
-<!--                <th>Type</th>-->
-<!--                <th>Cost per Day</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="insurance: ${insurance}">-->
-<!--                <td th:text="${insurance.name}"></td>-->
-<!--                <td th:text="${insurance.type}"></td>-->
-<!--                <td th:text="${insurance.costPerDay}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
+
+            <thead>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Mileage</th>
+                <th>Capacity</th>
+                <th>Cost per Day</th>
+                <th>Status</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="vehicle: ${vehicle}">
+                <td th:text="${vehicle.modelName}"></td>
+                <td th:text="${vehicle.modelYear}"></td>
+                <td th:text="${vehicle.mileage}"></td>
+                <td th:text="${vehicle.capacity}"></td>
+                <td th:text="${vehicle.costPerDay}"></td>
+                <td th:text="${vehicle.status}"></td>
+                <td th:text="${vehicle.category}"></td>
+            </tr>
+            </tbody>
+
+
+
+        </table>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Cost per Day</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="insurance: ${insurance}">
+                <td th:text="${insurance.name}"></td>
+                <td th:text="${insurance.type}"></td>
+                <td th:text="${insurance.costPerDay}"></td>
+            </tr>
+            </tbody>
+        </table>
         <table class="table table-bordered table-striped" id="billing-table">
             <thead>
             <tr>
@@ -91,6 +107,8 @@
         <button class="btn btn-primary" name="billId" th:value="${bill.id}" type="submit">Make a Payment</button>
     </form>
 </div>
+
+
 
 </body>
 </html>

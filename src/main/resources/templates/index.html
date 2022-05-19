@@ -10,15 +10,18 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
 </head>
-<body class="text-center">
-<img src='https://projectalmbucket.s3.amazonaws.com/logo/alm2.png' alt="ALM Logo" style="width: 200px;">
-<h1 class="text-center">ALM | CAR RENTAL</h1>
-<h3 class="text-center">Hello, welcome to ALM Car Rental!</h3>
-<hr/>
-<a th:href="@{/getDateTime}"  class="btn btn-primary mb-2">Book a Vehicle</a>
-<a th:href="@{/admin/vehicles}"  class="btn btn-primary mb-2">List of Vehicles</a>
-<a th:href="@{/admin/listUsers}"  class="btn btn-primary mb-2">List of Users</a>
+<body>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<div class="container text-center">
+    <img src='https://projectalmbucket.s3.amazonaws.com/logo/alm2.png' alt="ALM Logo" style="width: 200px;">
+    <h1 class="text-center">ALM | CAR RENTAL</h1>
+    <h3 class="text-center">Hello, welcome to ALM Car Rental!</h3>
+    <hr/>
+    <a th:href="@{/getDateTime}"  class="btn btn-primary mb-2">Book a Vehicle</a>
+    <!--<a th:href="@{/admin/vehicles}"  class="btn btn-primary mb-2">List of Vehicles</a>-->
+    <!--<a th:href="@{/admin/listUsers}"  class="btn btn-primary mb-2">List of Users</a>-->
+    <div class="alert alert-primary text-center" role="alert" th:text="${success}" th:if="${success}"></div>
+</div>
+</body>
 <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
-</body>    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
-
 </html>

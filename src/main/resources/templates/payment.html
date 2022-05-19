@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="">
 <head>
     <meta charset="UTF-8">
     <title>Booking Confirmation</title>
@@ -11,6 +11,8 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
     <h2>Booking Confirmed</h2>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>

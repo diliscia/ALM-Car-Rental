@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en" xmlns:sec="">
 
 <head>
   <meta charset="UTF-8">
@@ -16,7 +16,8 @@
   <title>Register | ALM Car Rental </title>
 </head>
 <body>
-<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
   <h3 class="brand-text">New User registration</h3>
   <form th:action="@{/registration}" th:object="${user}" method="POST">

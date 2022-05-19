@@ -15,7 +15,8 @@
 <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
 </head>
 <body>
-<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
   <h2>Choose your dates</h2>
   <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>

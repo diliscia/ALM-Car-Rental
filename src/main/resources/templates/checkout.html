@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
 <form action='/charge' method='POST' id='checkout-form'>
     <input type='hidden' th:value='${amount}' name='amount' />

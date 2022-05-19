@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org' xmlns:sec="">
 <head>
   <title>Result</title>
 </head>
 <body>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <h3 th:if='${error}' th:text='${error}' style='color: red;'></h3>
 <div th:unless='${error}'>
   <h3 style='color: green;'>Success!</h3>

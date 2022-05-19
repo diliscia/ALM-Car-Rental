@@ -2,6 +2,7 @@ package alm.carrentalproject.Controller;
 
 import alm.carrentalproject.Entity.*;
 import alm.carrentalproject.Repository.*;
+import alm.carrentalproject.Service.UserService;
 import com.stripe.exception.StripeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,8 @@ public class RentTempController {
     private UserRepository userRepository;
     @Autowired
     private BillingRepository billingRepository;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/getDateTime")
     public String getDateTime() {
@@ -128,7 +131,7 @@ public class RentTempController {
 
         User user = userRepository.findByUsername(principal.getName()).get();
         if (user.getRole() == User.Role.ADMIN) {
-            return mav;
+            return userService.listUsersForBooking(pickup_date, pickup_time, drop_date, drop_time, vehicleId, insuranceId, modelMap);
         }
 
         newRent.setUser(user);
@@ -189,4 +192,63 @@ public class RentTempController {
         mav.addObject("list_bills", bills);
         return mav;
     }
+
+    @PostMapping("/user/createBookingByAdmin")
+    public ModelAndView createBookingByAdmin(@RequestParam("pickup_date") String pickup_date,
+                                             @RequestParam("pickup_time") String pickup_time,
+                                             @RequestParam("drop_date") String drop_date,
+                                             @RequestParam("drop_time") String drop_time,
+                                             @RequestParam("vehicleId") Long vehicleId,
+                                             @RequestParam("insuranceId") Long insuranceId,
+                                             @RequestParam("userId") Long userId,
+                                             ModelMap modelMap) throws ParseException {
+        ModelAndView mav = new ModelAndView("success_booking");
+        modelMap.put("pickup_date", pickup_date);
+        modelMap.put("pickup_time", pickup_time);
+        modelMap.put("drop_date", drop_date);
+        modelMap.put("drop_time", drop_time);
+        Rent newRent = new Rent();
+        newRent.setPickup_date(new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date));
+        newRent.setPickup_time(new SimpleDateFormat("HH:mm").parse(pickup_time));
+        newRent.setDrop_date(new SimpleDateFormat("yyyy-MM-dd").parse(drop_date));
+        newRent.setDrop_time(new SimpleDateFormat("HH:mm").parse(drop_time));
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).get();
+        newRent.setVehicle(vehicle);
+        Insurance insurance = insuranceRepository.findById(insuranceId).get();
+        newRent.setInsurance(insurance);
+        newRent.setStatus(Rent.RENT_STATUS.PENDING);
+        User user = userRepository.findById(userId).get();
+        newRent.setUser(user);
+        rentRepository.save(newRent);
+        mav.addObject("rentId", newRent.getId());
+        mav.addObject("rent", newRent);
+        double vehicleCostPerDay = vehicleRepository.findById(vehicleId).get().getCostPerDay();
+        double insuranceCostPerDay = insuranceRepository.findById(insuranceId).get().getCostPerDay();
+        long diffDays = (newRent.getDrop_date().getTime() - newRent.getPickup_date().getTime());
+        diffDays = TimeUnit.DAYS.convert(diffDays, TimeUnit.MILLISECONDS) + 1;
+        double totalCost = diffDays * (vehicleCostPerDay + insuranceCostPerDay);
+
+        Date todayDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(todayDate);
+        c.add(Calendar.DAY_OF_YEAR, 90);
+        System.out.println(c.getTime());
+        Date dueDate = c.getTime();
+
+        Billing bill = new Billing();
+        bill.setAmount(totalCost);
+        bill.setRent(rentRepository.findById(newRent.getId()).get());
+        bill.setBill_date(todayDate);
+        bill.setDue_date(dueDate);
+        bill.setIsPaid(Billing.Status.NOT_PAID);
+        bill.setLate_fee(0);
+        billingRepository.save(bill);
+
+        mav.addObject("vehicle", vehicle);
+        mav.addObject("insurance", insurance);
+        mav.addObject("bill", bill);
+
+        return mav;
+    }
+
 }

@@ -60,6 +60,13 @@ public class VehicleControler {
         return mav;
     }
 
+    @GetMapping("/admin/deleteVehicle")
+    public String deleteVehicle(@RequestParam Long vehicleId, Model model, RedirectAttributes redirAttrs) {
+        redirAttrs.addFlashAttribute("success", "Vehicle deleted successfully!!");
+        vehicleRepo.deleteById(vehicleId);
+        return"redirect:/admin/vehicles";
+    }
+
     @GetMapping("/client-vehicles")
     public ModelAndView ClientVehiclesPage() {
         ModelAndView mav = new ModelAndView("client-vehicles");

@@ -15,8 +15,7 @@
 </head>
 
 <body class="grey lighten-4">
-<nav class="white z-depth-0" th:replace="fragment/header_anonymous :: header">
-</nav>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
 <div class="container">
     <h3 class="brand-text">Add Vehicle</h3>
     <a th:href="@{/admin/vehicles}" class="btn btn-primary mb-2">Back to List of Vehicles</a>

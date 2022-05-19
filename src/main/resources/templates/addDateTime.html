@@ -12,30 +12,48 @@
         crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="date.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
 </head>
-
-<body class="grey lighten-4">
-<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
-<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
-
+<body>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
 <div class="container">
-  <h3 class="brand-text">Make a Rent</h3>
+  <h2>Choose your dates</h2>
+  <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
+  <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+  <h4 class="alert alert-danger" th:if="${loginError}" >Invalid username or password</h4>
 
+  <hr/>
   <form th:action="@{/saveDateTime}" method="GET">
-    <label>Pick up Date</label>
-    <input type="date" name="pickup_date"><br>
-<!--    <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>-->
-    <label>Pick up Time</label>
-    <input type="time" name="pickup_time"><br>
-<!--    <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>-->
-    <label>Drop Date</label>
-    <input type="date"  name="drop_date"><br>
-<!--    <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>-->
-    <label>Drop Time</label>
-    <input type="time" name="drop_time"><br>
-<!--    <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>-->
+<!--    <label>Pick up Date</label>-->
+<!--    <input type="date" name="pickup_date"><br>-->
+    <div class="red-text" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>
+<!--    <label>Pick up Time</label>-->
+<!--    <input type="time" name="pickup_time"><br>-->
+    <div class="red-text" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>
+<!--    <label>Drop Date</label>-->
+<!--    <input type="date"  name="drop_date"><br>-->
+    <div class="red-text" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>
+<!--    <label>Drop Time</label>-->
+<!--    <input type="time" name="drop_time"><br>-->
+    <div class="red-text" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>
 
+    <table class="table table-bordered" id="date-time-table">
+      <thead class="text-center">
+      <tr>
+        <th>Pickup Date</th>
+        <th>Pickup Time</th>
+        <th>Drop Date</th>
+        <th>Drop Time</th>
+      </tr>
+      </thead>
+      <tbody class="text-center">
+      <td><input type="date" name="pickup_date"></td>
+      <td><input type="time"  name="pickup_time"></td>
+      <td><input type="date"  name="drop_date"></td>
+      <td><input type="time" name="drop_time"></td>
+      </tr>
+      </tbody>
+    </table>
     <button class="btn btn-primary" type="submit"  >Choose Vehicle</button>
   </form>
   </hr>

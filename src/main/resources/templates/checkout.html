@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<div class="container">
 <form action='/charge' method='POST' id='checkout-form'>
     <input type='hidden' th:value='${amount}' name='amount' />
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -24,5 +26,6 @@
             data-zip-code='false'>
     </script>
 </form>
+</div>
 </body>
 </html>

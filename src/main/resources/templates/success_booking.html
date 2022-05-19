@@ -11,17 +11,31 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
 <div class="container">
-    <h2>Booking Confirmed</h2>
+    <h3>Booking Confirmed</h3>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
-    <h2>Here is your confirmation number <span th:text="${rentId}"></span></h2>
-    <form action="/makepayment" method="get" >
-        <h4> Pickup Date: <span th:text="${rent.pickup_date}"></span></h4>
-        <h4> Pickup Time: <span th:text="${rent.pickup_time}"></span></h4>
-        <h4> Drop Date: <span th:text="${rent.drop_date}"></span></h4>
-        <h4> Drop Time: <span  th:text="${rent.drop_time}"> </span></h4>
+    <h2>Your confirmation number is: <span th:text="${rentId}"></span></h2>
+    <form action="/checkout" method="get" >
+        <table class="table table-bordered" id="date-time-table">
+            <thead class="text-center">
+            <tr>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Drop Date</th>
+                <th>Drop Time</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <td><input type="date" name="pickup_date" th:value="${pickup_date}" th:readonly="true"></td>
+            <td><input type="time" name="pickup_time" th:value="${pickup_time}" th:readonly="true"></td>
+            <td><input type="date" name="drop_date" th:value="${drop_date}" th:readonly="true"></td>
+            <td><input type="time" name="drop_time" th:value="${drop_time}" th:readonly="true"></td>
+            </tr>
+            </tbody>
+        </table>
         <table class="table table-bordered table-striped">
             <thead>
             <tr>

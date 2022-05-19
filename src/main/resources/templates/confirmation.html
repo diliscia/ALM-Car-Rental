@@ -11,16 +11,31 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="text-center" th:insert="fragment/header :: header"></nav>
 <div class="container">
     <h2>Confirm your Booking</h2>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
+    <h3 class="text-center">Summary of your Booking</h3>
     <form th:action="@{/user/createBooking}" method="POST">
-        <h4> Pickup Date: <input type="text" name="pickup_date" th:value="${pickup_date}"></h4>
-        <h4> Pickup Time: <input type="text" name="pickup_time" th:value="${pickup_time}"></h4>
-        <h4> Drop Date: <input type="text" name="drop_date" th:value="${drop_date}"></h4>
-        <h4> Drop Time: <input type="text" name="drop_time" th:value="${drop_time}"></h4>
+        <table class="table table-bordered" id="date-time-table">
+            <thead class="text-center">
+            <tr>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Drop Date</th>
+                <th>Drop Time</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <td><input type="date" name="pickup_date" th:value="${pickup_date}" th:readonly="true"></td>
+            <td><input type="time" name="pickup_time" th:value="${pickup_time}" th:readonly="true"></td>
+            <td><input type="date" name="drop_date" th:value="${drop_date}" th:readonly="true"></td>
+            <td><input type="time" name="drop_time" th:value="${drop_time}" th:readonly="true"></td>
+            </tr>
+            </tbody>
+        </table>
         <input type="hidden" name="vehicleId" th:value="${vehicleId}">
         <input type="hidden" name="insuranceId" th:value="${insuranceId}">
         <table class="table table-bordered table-striped">
@@ -68,7 +83,7 @@
             </tr>
             </tbody>
         </table>
-        <input class="waves-effect waves-light btn" type="submit" name="submit" value="Book">
+        <input class="btn-primary btn" type="submit" name="submit" value="Book">
     </form>
 </div>
 

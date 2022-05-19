@@ -50,7 +50,7 @@ public class RentController {
         }
     }
 
-    @GetMapping("/rents")
+    @GetMapping("/admin/rents")
     public ModelAndView viewRents() {
         ModelAndView mav = new ModelAndView("rents");
         List<Rent> rents = rentRepository.findAll();
@@ -58,12 +58,12 @@ public class RentController {
         return mav;
     }
 
-    @GetMapping("/admin/updateRent")
-    public ModelAndView updateRent(@RequestParam Long rentId) {
-        ModelAndView mav = new ModelAndView("rent");
-        Rent rent = rentRepository.findById(rentId).get();
-        mav.addObject("rent", rent);
-        return mav;
-    }
+//    @GetMapping("/admin/updateRent")
+//    public ModelAndView updateRent(@RequestParam Long rentId) {
+//        ModelAndView mav = new ModelAndView("rent");
+//        Rent rent = rentRepository.findById(rentId).get();
+//        mav.addObject("rent", rent);
+//        return mav;
+//    }
 
 }

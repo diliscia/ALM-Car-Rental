@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" th:href="@{/style.css}">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -15,78 +13,79 @@
 </head>
 
 <body class="grey lighten-4">
-<nav class="text-center" th:insert="fragment/header :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
     <h3 class="brand-text">Add Vehicle</h3>
     <a th:href="@{/admin/vehicles}" class="btn btn-primary mb-2">Back to List of Vehicles</a>
     <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     </hr>
     <form th:action="@{/admin/saveVehicle}" th:object="${vehicle}" method="POST">
-        <label >ImageURL</label>
-        <input type="text" th:field="*{imageURL}" ><br>
-        <label >Model Name</label>
-        <input type="text" th:field="*{modelName}" ><br>
+        <label class="col-sm-2 col-form-label">ImageURL</label>
+        <input type="text" class="form-control" th:field="*{imageURL}" ><br>
+        <label class="col-sm-2 col-form-label">Model Name</label>
+        <input type="text" class="form-control" th:field="*{modelName}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>
-        <label >VIN</label>
-        <input type="text" th:field="*{vin}" ><br>
+        <label class="col-sm-2 col-form-label">VIN</label>
+        <input type="text" class="form-control" th:field="*{vin}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">error</div>
-        <label >Plate</label>
-        <input type="text" th:field="*{plate}"><br>
+        <label class="col-sm-2 col-form-label">Plate</label>
+        <input type="text" class="form-control" th:field="*{plate}"><br>
         <div class="red-text" th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}">error</div>
-        <label >Model Year</label>
-        <input type="number" th:field="*{modelYear}"><br>
+        <label class="col-sm-2 col-form-label">Model Year</label>
+        <input type="number" class="form-control" th:field="*{modelYear}"><br>
         <div class="red-text" th:if="${#fields.hasErrors('modelYear')}" th:errors="*{modelYear}">error</div>
-        <label >Mileage</label>
-        <input type="number" th:field="*{mileage}" ><br>
+        <label class="col-sm-2 col-form-label">Mileage</label>
+        <input type="number" class="form-control" th:field="*{mileage}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}">error</div>
 
         <div class="mb-3">
-            <label class="form-label">Status</label><br>
-            <p>
+            <label class="col-sm-2 col-form-label">Status</label><br>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{status}" value ="AVAILABLE" name="group2" type="radio"  />
+                    <input class="form-check-input"  th:field="*{status}" value ="AVAILABLE" name="group2" type="radio"  />
                     <span>AVAILABLE</span>
                 </label>
             </p>
-            <p>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{status}" value = "RENTED" name="group2" type="radio"  />
+                    <input class="form-check-input" th:field="*{status}" value = "RENTED" name="group2" type="radio"  />
                     <span>RENTED</span>
                 </label>
             </p>
 
         </div>
 
-        <label >Capacity</label>
-        <input type="number" th:field="*{capacity}" ><br>
+        <label class="col-sm-2 col-form-label">Capacity</label>
+        <input type="number" class="form-control" th:field="*{capacity}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">error</div>
-        <label >Cost per Day</label>
-        <input type="number" th:field="*{costPerDay}" ><br>
+        <label class="col-sm-2 col-form-label">Cost per Day</label>
+        <input type="number" class="form-control" th:field="*{costPerDay}" ><br>
         <div class="red-text" th:if="${#fields.hasErrors('costPerDay')}" th:errors="*{costPerDay}">error</div>
 
         <div class="mb-3">
-            <label class="form-label">Category</label><br>
-            <p>
+            <label class="col-sm-2 col-form-label">Category</label><br>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{category}" value = "ECONOMY" name="group1" type="radio" checked />
+                    <input class="form-check-input" th:field="*{category}" value = "ECONOMY" name="group1" type="radio" checked />
                     <span>ECONOMY</span>
                 </label>
             </p>
-            <p>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{category}" value = "LUXURY" name="group1" type="radio" />
+                    <input class="form-check-input" th:field="*{category}" value = "LUXURY" name="group1" type="radio" />
                     <span>LUXURY</span>
                 </label>
             </p>
-            <p>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{category}" value = "TRUCK" name="group1" type="radio"  />
+                    <input class="form-check-input" th:field="*{category}" value = "TRUCK" name="group1" type="radio"  />
                     <span>TRUCK</span>
                 </label>
             </p>
-            <p>
+            <p class="form-check form-check-inline">
                 <label>
-                    <input class="with-gap" th:field="*{category}" value = "VAN" name="group1" type="radio"  />
+                    <input class="form-check-input" th:field="*{category}" value = "VAN" name="group1" type="radio"  />
                     <span>VAN</span>
                 </label>
             </p>

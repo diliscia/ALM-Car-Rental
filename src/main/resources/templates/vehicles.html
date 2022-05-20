@@ -24,12 +24,12 @@
         <tr>
             <th>Image</th>
             <th>Model</th>
-            <th>VIN</th>
+<!--            <th>VIN</th>-->
             <th>Plate</th>
             <th>Year</th>
             <th>km/L</th>
-            <th>Capacity</th>
-            <th>Cost per Day</th>
+            <th>Cap.</th>
+            <th>Cost</th>
             <th>Status</th>
             <th>Category</th>
             <th>Action</th>
@@ -41,7 +41,7 @@
                 <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
             </td>
             <td th:text="${vehicle.modelName}"></td>
-            <td th:text="${vehicle.vin}"></td>
+<!--            <td th:text="${vehicle.vin}"></td>-->
             <td th:text="${vehicle.plate}"></td>
             <td th:text="${vehicle.modelYear}"></td>
             <td th:text="${vehicle.mileage}"></td>
@@ -51,7 +51,7 @@
             <td th:text="${vehicle.category}"></td>
             <td>
                 <a th:href="@{/admin/showUpdateForm(vehicleId=${vehicle.id})}" class="btn btn-info">Update</a>
-                <a th:href="@{/admin/deleteVehicle(vehicleId=${vehicle.id})}" class="btn btn-danger ml-2">Delete</a>
+                <a th:href="@{/admin/deleteVehicle(vehicleId=${vehicle.id})}" class="btn btn-danger ml-2 mt-2">Delete</a>
             </td>
         </tr>
         </tbody>

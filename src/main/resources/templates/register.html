@@ -25,7 +25,7 @@
     <input type="text" class="form-control" id="staticEmail" value="email@example.com" th:field="*{email}" ><br>
     <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</div>
     <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{password}"><br>
+    <input type="password" class="form-control" id="inputPassword" th:field="*{password}"><br>
     <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</div>
     <label class="col-sm-2 col-form-label" >Repeat password</label>
     <input type="password" class="form-control"  th:field="*{passwordRepeat}"><br>

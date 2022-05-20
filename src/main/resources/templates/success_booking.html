@@ -110,6 +110,15 @@
         <button class="btn btn-primary" name="billId" th:value="${bill.id}" type="submit">Make a Payment</button>
     </form>
 </div>
-
+<script>
+        $(document).ready(function() {
+            $("#billing-table").DataTable({
+                'aoColumnDefs': [{
+                    'bSortable': false,
+                    'aTargets': []
+                    }]
+            });
+        })
+    </script>
 </body>
 </html>

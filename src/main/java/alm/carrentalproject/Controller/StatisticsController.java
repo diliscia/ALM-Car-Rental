@@ -17,14 +17,14 @@ public class StatisticsController {
     @Autowired
     private StatisticsRepository statisticsRepository;
 
-    @GetMapping("/statistics")
+    @GetMapping("/admin/statistics")
     public ModelAndView showStatistics(){
         ModelAndView mav=new ModelAndView("statistics");
 
         return mav;
     }
 
-    @GetMapping("/statistics1")
+    @GetMapping("/admin/statistics1")
     public ModelAndView showStatistics1(){
         ModelAndView mav=new ModelAndView("statistics1");
         List<Statistics> statistics=statisticsRepository.getAll();

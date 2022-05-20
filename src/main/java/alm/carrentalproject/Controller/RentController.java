@@ -123,6 +123,7 @@ public class RentController {
         modelMap.put("pickup_time", pickup_time);
         modelMap.put("drop_date", drop_date);
         modelMap.put("drop_time", drop_time);
+
         Rent newRent = new Rent();
         newRent.setPickup_date(new SimpleDateFormat("yyyy-MM-dd").parse(pickup_date));
         newRent.setPickup_time(new SimpleDateFormat("HH:mm").parse(pickup_time));
@@ -138,7 +139,6 @@ public class RentController {
         if (user.getRole() == User.Role.ADMIN) {
             return userService.listUsersForBooking(pickup_date, pickup_time, drop_date, drop_time, vehicleId, insuranceId, modelMap);
         }
-
         newRent.setUser(user);
         rentRepository.save(newRent);
         mav.addObject("rentId", newRent.getId());

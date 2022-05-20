@@ -13,7 +13,7 @@ import java.util.List;
 public class StatisticsController {
 
     @Autowired
-    private RentTempController rentTempController;
+    private RentController rentTempController;
     @Autowired
     private StatisticsRepository statisticsRepository;
 

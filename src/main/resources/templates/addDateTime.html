@@ -50,10 +50,10 @@
       </tr>
       </thead>
       <tbody class="text-center table">
-      <td scope="col" ><input type="date" name="pickup_date" id="pickup_date"></td>
-      <td scope="col" ><input type="time"  name="pickup_time" id="pickup_time"></td>
-      <td scope="col" ><input type="date"  name="drop_date" id="drop_date"></td>
-     <td scope="col"><input type="time" name="drop_time" id="drop_time"></td>
+      <td scope="col"><input type="date"  id="pickup_date"></td>
+      <td scope="col"><input type="time"  id="pickup_time"></td>
+      <td scope="col"><input type="date"  id="drop_date"></td>
+      <td scope="col"><input type="time"  id="drop_time"></td>
       </tr>
       </tbody>
     </table>
@@ -63,9 +63,10 @@
 </div>
 <script>
 var pickup_date = document.getElementById("pickup_date");
-var pickup_time = document.getElementById("pickup_time");
+var pickup_time=document.getElementById("pickup_time");
 var drop_date = document.getElementById("drop_date");
-var drop_time = document.getElementById("drop_time");
+var drop_time=document.getElementById("drop_time");
+
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -77,11 +78,12 @@ curTime=hh + ':' + mm
 
 pickup_date.setAttribute('value', curDate);
 pickup_date.setAttribute('min', curDate);
-pickup_time.setAttribute('value', curTime);
+pickup_time.setAttribute('value',curTime);
 
 drop_date.setAttribute('value', curDate);
 drop_date.setAttribute('min', curDate);
-drop_time.setAttribute('value', curTime);
+drop_time.setAttribute('value',curTime);
+
 </script>
 </body>
 

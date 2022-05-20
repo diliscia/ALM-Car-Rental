@@ -15,6 +15,7 @@
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
     <h2>List of Bills</h2>
+    <a th:href="@{/admin/addBillForm}" class="btn btn-primary mb-2">Add Bill</a>
     <hr/>
     <table class="table table-bordered table-striped" id="billing-table">
         <thead>

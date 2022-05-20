@@ -25,23 +25,23 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @NotNull(message = "Please choose a pickup date")
-//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull(message = "Please choose a pickup date")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date pickup_date;
 
-//    @NotNull(message = "Please choose a pickup time")
-//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull(message = "Please choose a pickup time")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "HH:mm:ss")
     private Date pickup_time;
 
-//    @NotNull(message = "Please pick a drop date")
-//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull(message = "Please pick a drop date")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date drop_date;
 
-//    @NotNull(message = "Please pick a drop time")
-//    @Column(nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull(message = "Please pick a drop time")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")
     @DateTimeFormat(pattern = "HH:mm:ss")
     private Date drop_time;
 
@@ -54,7 +54,6 @@ public class Rent {
     }
 
     @Enumerated(EnumType.STRING)
-//    @Column(nullable = false)
     private RENT_STATUS status = RENT_STATUS.RENTED;
 
     @ManyToOne(fetch=FetchType.LAZY,optional = false )

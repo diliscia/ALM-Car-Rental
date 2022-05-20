@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "billing")
+@Table(name = "billings")
 @Data
 @NoArgsConstructor
 public class Billing {

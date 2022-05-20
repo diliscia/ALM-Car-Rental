@@ -20,7 +20,6 @@ public class StatisticsController {
     @GetMapping("/admin/statistics")
     public ModelAndView showStatistics(){
         ModelAndView mav=new ModelAndView("statistics");
-
         return mav;
     }
 

@@ -2,94 +2,69 @@
 <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Rent a Vehicle | ALM Car Rental</title>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--    // moment().format('YYYY-MM-DD');-->
-<!--    document.getElementById("pickup_date").value = "2022-05-21";-->
-<!--    document.getElementById("drop_date").value = "2022-05-21";-->
-
+  <meta charset="UTF-8">
+  <title>Rent a Vehicle | ALM Car Rental</title>
+  <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="date.js"></script>
 </head>
 <body>
-
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <ul class="navbar-nav">
-                <li class="nav-item btn">
-                    <a class="btn btn-success nav-link" style="width:200px" aria-current="page" href="/getDateTime">1.
-                        Choose Date & Time </a>
-                </li>
-                <li class="nav-item btn">
-                    <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page" href="/setVehicle">2.
-                        Vehicle Selection</a>
-                </li>
-                <li class="nav-item btn">
-                    <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page" href="/setInsurance">3.
-                        Insurance Selection</a>
-                </li>
-                <li class="nav-item btn">
-                    <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page"
-                       href="/user/createBooking">4. Confirmation</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="" role="alert" th:text="${success}" th:if="${success}"></div>
-    <h4 class="alert alert-danger" th:if="${loginError}">Invalid username or password</h4>
+  <nav class="navbar navbar-expand-lg justify-content-center">
+    <div class="">
+        <ul class="navbar-nav">
+          <li class="nav-item btn">
+            <a class="btn btn-success nav-link" style="width:200px" aria-current="page" href="/getDateTime">1. Choose Date & Time </a>
+          </li>
+          <li class="nav-item btn">
+            <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page" href="#">2. Vehicle Selection</a>
+          </li>
+          <li class="nav-item btn">
+            <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page" href="#">3. Insurance Selection</a>
+          </li>
+          <li class="nav-item btn">
+            <a class="btn btn-secondary nav-link" style="width:200px" aria-current="page" href="#">4. Confirmation</a>
+          </li>
+        </ul>
+    </div>
+  </nav>
 
-    <hr/>
-    <form th:action="@{/saveDateTime}" method="GET">
-        <table class="table table-bordered" id="date-time-table">
-            <thead class="text-center">
-            <tr>
-                <th>Pickup Date</th>
-                <th>Pickup Time</th>
-                <th>Drop Date</th>
-                <th>Drop Time</th>
-            </tr>
-            </thead>
-            <tbody class="text-center">
+  <div class="" role="alert" th:text="${success}" th:if="${success}"></div>
+  <h4 class="alert alert-danger" th:if="${loginError}" >Invalid username or password</h4>
 
-            <td><input type="date" name="pickup_date" id="pickup_date" >
-
-            </td>
-
-            <!--      <div class="" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>-->
-            <td><input type="time" name="pickup_time"></td>
-            <!--      <div class="" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>-->
-            <td><input type="date" name="drop_date" id="drop_date"></td>
-            <!--      <div class="" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>-->
-            <td><input type="time" name="drop_time"></td>
-            <!--      <div class="" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>-->
-            </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-primary" type="submit">Choose Vehicle</button>
-    </form>
-    </hr>
-    <a th:href="@{/}">Cancel the Operation</a>
+  <hr/>
+  <form th:action="@{/saveDateTime}" method="GET">
+    <table class="table table-bordered" id="date-time-table">
+      <thead class="text-center">
+      <tr>
+        <th>Pickup Date</th>
+        <th>Pickup Time</th>
+        <th>Drop Date</th>
+        <th>Drop Time</th>
+      </tr>
+      </thead>
+      <tbody class="text-center table">
+      <td scope="col" ><input type="date" name="pickup_date"></td>
+<!--      <div class="" th:if="${#fields.hasErrors('pickup_date')}" th:errors="*{pickup_date}">error</div>-->
+      <td scope="col" ><input type="time"  name="pickup_time"></td>
+<!--      <div class="" th:if="${#fields.hasErrors('pickup_time')}" th:errors="*{pickup_time}">error</div>-->
+      <td scope="col" ><input type="date"  name="drop_date"></td>
+<!--      <div class="" th:if="${#fields.hasErrors('drop_date')}" th:errors="*{drop_date}">error</div>-->
+      <td scope="col"><input type="time" name="drop_time"></td>
+<!--      <div class="" th:if="${#fields.hasErrors('drop_time')}" th:errors="*{drop_time}">error</div>-->
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Choose Vehicle</button>
+  </form>
+  </hr>
 </div>
-<script>
-var pickup_date = document.getElementById("pickup_date");
-var drop_date = document.getElementById("drop_date");
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-today =yyyy  + '-' + mm + '-' + dd;
-pickup_date.setAttribute('value', today);
-pickup_date.setAttribute('min', today);
-drop_date.setAttribute('value', today);
-drop_date.setAttribute('min', today);
-</script>
 </body>
 </html>

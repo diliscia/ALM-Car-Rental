@@ -18,45 +18,45 @@
 <div class="container">
   <h3 class="brand-text">New User registration</h3>
   <form th:action="@{/registration}" th:object="${user}" method="POST">
-    <label >Desired username</label>
-    <input type="text" th:field="*{username}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</div>
-    <label >Your email</label>
-    <input type="text" th:field="*{email}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</div>
-    <label >Password</label>
-    <input type="password" th:field="*{password}"><br>
-    <div class="red-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</div>
-    <label >Repeat password</label>
-    <input type="password" th:field="*{passwordRepeat}"><br>
-    <div class="red-text" th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}">error</div>
-    <label >First Name</label>
-    <input type="text" th:field="*{firstName}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">error</div>
-    <label >Last Name</label>
-    <input type="text" th:field="*{lastName}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">error</div>
-    <label >Phone</label>
-    <input type="text" th:field="*{phone}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error</div>
-    <label >Driver License</label>
-    <input type="text" th:field="*{driverLicense}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('driverLicense')}" th:errors="*{driverLicense}">error</div>
-    <label >Apt</label>
-    <input type="text" th:field="*{apt}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('apt')}" th:errors="*{apt}">error</div>
-    <label >Street</label>
-    <input type="text" th:field="*{street}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">error</div>
-    <label >City</label>
-    <input type="text" th:field="*{city}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">error</div>
-    <label >Province</label>
-    <input type="text" th:field="*{province}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('province')}" th:errors="*{province}">error</div>
-    <label >Postal Code</label>
-    <input type="text" th:field="*{postalCode}" ><br>
-    <div class="red-text" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">error</div>
+    <label class="col-sm-2 col-form-label" >Desired username</label>
+    <input type="text" class="form-control"  th:field="*{username}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</div>
+    <label for="staticEmail" class="col-sm-2 col-form-label" >Your email</label>
+    <input type="text" class="form-control" id="staticEmail" value="email@example.com" th:field="*{email}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</div>
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Password" th:field="*{password}"><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">error</div>
+    <label class="col-sm-2 col-form-label" >Repeat password</label>
+    <input type="password" class="form-control"  th:field="*{passwordRepeat}"><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}">error</div>
+    <label class="col-sm-2 col-form-label" >First Name</label>
+    <input type="text" class="form-control"  th:field="*{firstName}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">error</div>
+    <label class="col-sm-2 col-form-label" >Last Name</label>
+    <input type="text" class="form-control"  th:field="*{lastName}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">error</div>
+    <label class="col-sm-2 col-form-label" >Phone</label>
+    <input type="text" class="form-control"  th:field="*{phone}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">error</div>
+    <label class="col-sm-2 col-form-label" >Driver License</label>
+    <input type="text" class="form-control"  th:field="*{driverLicense}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('driverLicense')}" th:errors="*{driverLicense}">error</div>
+    <label class="col-sm-2 col-form-label" >Apt</label>
+    <input type="text" class="form-control"  th:field="*{apt}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('apt')}" th:errors="*{apt}">error</div>
+    <label class="col-sm-2 col-form-label" >Street</label>
+    <input type="text" class="form-control"  th:field="*{street}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">error</div>
+    <label class="col-sm-2 col-form-label" >City</label>
+    <input type="text" class="form-control"  th:field="*{city}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">error</div>
+    <label class="col-sm-2 col-form-label" >Province</label>
+    <input type="text" class="form-control"  th:field="*{province}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('province')}" th:errors="*{province}">error</div>
+    <label class="col-sm-2 col-form-label" >Postal Code</label>
+    <input type="text" class="form-control" th:field="*{postalCode}" ><br>
+    <div class="alert alert-danger" th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}">error</div>
 
     <input class="btn btn-primary" type="submit" name="submit" value="Register!">
   </form>

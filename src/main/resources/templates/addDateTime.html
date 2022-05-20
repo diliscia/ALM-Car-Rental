@@ -63,16 +63,25 @@
 </div>
 <script>
 var pickup_date = document.getElementById("pickup_date");
+var pickup_time = document.getElementById("pickup_time");
 var drop_date = document.getElementById("drop_date");
+var drop_time = document.getElementById("drop_time");
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-today =yyyy  + '-' + mm + '-' + dd;
-pickup_date.setAttribute('value', today);
-pickup_date.setAttribute('min', today);
-drop_date.setAttribute('value', today);
-drop_date.setAttribute('min', today);
+curDate =yyyy  + '-' + mm + '-' + dd;
+var hh=today.getHours();
+var mm=today.getMinutes();
+curTime=hh + ':' + mm
+
+pickup_date.setAttribute('value', curDate);
+pickup_date.setAttribute('min', curDate);
+pickup_time.setAttribute('value', curTime);
+
+drop_date.setAttribute('value', curDate);
+drop_date.setAttribute('min', curDate);
+drop_time.setAttribute('value', curTime);
 </script>
 </body>
 

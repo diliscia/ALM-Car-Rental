@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org' xmlns:sec="">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.5/datatables.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
+
+<div id="container" style="height: 400px;">
+</div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.11.5/datatables.min.js"></script>
+
+<script>
+$.ajax({
+    url: '/admin/statistic',
+    success: function(result){
+        var date = JSON.parse(result).date;
+        var number = JSON.parse(result).numberOfBookings;
+        drawLineChart(date, number);
+    }
+})
+
+
+function drawLineChart(date, number) {
+    Highcharts.chart('container', {
+        chart:{
+            type: 'line',
+            width: 500
+        },
+        title: {
+            text:'Number Of Bookings'
+        },
+        xAxis: {
+            categories: date
+        },
+        tooltip: {
+            formatter: function() {
+                return '<strong>'+this.x+': </strong>'+this.y;
+            }
+        },
+        series: [{
+            data: number
+        }]
+    });
+}
+
+</script>
+
+</body>
+</html>

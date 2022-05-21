@@ -51,7 +51,7 @@ public class Vehicle {
 
     @NotEmpty(message = "Model name can not be empty!!")
     @Column(nullable = false)
-    @Pattern(regexp = "^(?![\\s.]+$)[a-zA-Z\\s.]*${1,20}$", message = "First name can only contains letters and must be between 1-20 characters.")
+    @Pattern(regexp = "^(?![\\s.]+$)[a-zA-Z\\s.]*${1,20}$", message = "Model name can only contains letters and must be between 1-20 characters.")
     private String modelName;
 
     @NotNull(message = "Model year can not be empty!!")
@@ -77,6 +77,6 @@ public class Vehicle {
     @DecimalMax("300.00") @DecimalMin("10.00")
     private double costPerDay;
 
-    @NotEmpty(message = "You must submit an image!!")
+    @NotEmpty(message = "Image cannot be empty, you must provide an URL for image!!")
     private String imageURL;
 }

@@ -23,21 +23,22 @@
     <form th:action="@{/admin/saveVehicle}" th:object="${vehicle}" method="POST">
         <label class="col-sm-2 col-form-label">ImageURL</label>
         <input type="text" class="form-control" th:field="*{imageURL}" ><br>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('imageURL')}" th:errors="*{imageURL}">error</div>
         <label class="col-sm-2 col-form-label">Model Name</label>
         <input type="text" class="form-control" th:field="*{modelName}" ><br>
-        <div class="red-text" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('modelName')}" th:errors="*{modelName}">error</div>
         <label class="col-sm-2 col-form-label">VIN</label>
         <input type="text" class="form-control" th:field="*{vin}" ><br>
-        <div class="red-text" th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('vin')}" th:errors="*{vin}">error</div>
         <label class="col-sm-2 col-form-label">Plate</label>
         <input type="text" class="form-control" th:field="*{plate}"><br>
-        <div class="red-text" th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('plate')}" th:errors="*{plate}">error</div>
         <label class="col-sm-2 col-form-label">Model Year</label>
         <input type="number" class="form-control" th:field="*{modelYear}"><br>
-        <div class="red-text" th:if="${#fields.hasErrors('modelYear')}" th:errors="*{modelYear}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('modelYear')}" th:errors="*{modelYear}">error</div>
         <label class="col-sm-2 col-form-label">Mileage</label>
         <input type="number" class="form-control" th:field="*{mileage}" ><br>
-        <div class="red-text" th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('mileage')}" th:errors="*{mileage}">error</div>
 
         <div class="mb-3">
             <label class="col-sm-2 col-form-label">Status</label><br>
@@ -58,10 +59,10 @@
 
         <label class="col-sm-2 col-form-label">Capacity</label>
         <input type="number" class="form-control" th:field="*{capacity}" ><br>
-        <div class="red-text" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">error</div>
         <label class="col-sm-2 col-form-label">Cost per Day</label>
         <input type="number" class="form-control" th:field="*{costPerDay}" ><br>
-        <div class="red-text" th:if="${#fields.hasErrors('costPerDay')}" th:errors="*{costPerDay}">error</div>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('costPerDay')}" th:errors="*{costPerDay}">error</div>
 
         <div class="mb-3">
             <label class="col-sm-2 col-form-label">Category</label><br>

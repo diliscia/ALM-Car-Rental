@@ -18,7 +18,7 @@ public class Billing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message="Bill date cannot be null and not before the current date")
+    @NotNull(message="Bill date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bill_date;
 
@@ -29,7 +29,7 @@ public class Billing {
     @Enumerated(EnumType.STRING)
     private Status isPaid = Status.NOT_PAID;
 
-    @NotNull(message="Due date cannot be null and not before the current date")
+    @NotNull(message="Due date cannot be null")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date due_date;
 

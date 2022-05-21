@@ -15,13 +15,15 @@
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
     <h2>List of Bills</h2>
-    <a th:href="@{/admin/addBillForm}" class="btn btn-primary mb-2">Add Bill</a>
+    <a href="/admin/addBillForm" class="btn btn-primary mb-2">Add Bill</a>
+    <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <hr/>
     <table class="table table-bordered table-striped" id="billing-table">
         <thead>
         <tr>
             <th>User</th>
             <th>Bill ID</th>
+            <th>Rent ID</th>
             <th>Amount</th>
             <th>Bill Date</th>
             <th>Is Paid</th>
@@ -37,6 +39,7 @@
         <tr th:each="bill: ${list_bills}">
             <td th:text="${bill.rent.user.username}"></td>
             <td th:text="${bill.id}"></td>
+            <td th:text="${bill.rent.id}"></td>
             <td th:text="${bill.amount}"></td>
             <td th:text="${#dates.format(bill.bill_date, 'MMM dd, yyyy ')}"></td>
             <td th:text="${bill.isPaid}"></td>
@@ -46,11 +49,7 @@
             <td th:text="${#dates.format(bill.rent.drop_date, 'MMM dd, yyyy ')}"></td>
             <td th:text="${bill.rent.vehicle.modelName}"></td>
             <td>
-<!--                <a th:href="@{/admin/showUpdateForm(billId=${bill.id})}" class="btn btn-info">Update</a>-->
-<!--                <a th:href="@{/admin/deleteBill(billId=${bill.id})}" class="btn btn-danger ml-2">Delete</a>-->
-                <a  class="btn btn-info">Update</a>
-                <a  class="btn btn-danger ml-2 mt-2">Delete</a>
-
+                <a th:href="@{/admin/showBill(billId=${bill.id})}" class="btn btn-info">Update</a>
             </td>
         </tr>
         </tbody>

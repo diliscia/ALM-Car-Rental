@@ -25,7 +25,7 @@ public class CheckoutController {
         ModelAndView mav = new ModelAndView("checkout");
         modelMap.put("billId", billId);
         Billing bill = billingRepository.findById(billId).get();
-        int totalAmount = (int)bill.getAmount();
+        int totalAmount = (int)(bill.getAmount()+bill.getLate_fee());
         mav.addObject("amount", totalAmount * 100); // in cents
         mav.addObject("stripePublicKey", stripePublicKey);
         mav.addObject("currency", ChargeRequest.Currency.CAD);

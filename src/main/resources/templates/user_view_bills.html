@@ -29,6 +29,7 @@
             <th>Pick Up Date</th>
             <th>Return Date</th>
             <th>Vehicle</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -43,6 +44,9 @@
             <td th:text="${#dates.format(bill.rent.pickup_date, 'MMM dd, yyyy ')}"></td>
             <td th:text="${#dates.format(bill.rent.drop_date, 'MMM dd, yyyy ')}"></td>
             <td th:text="${bill.rent.vehicle.modelName}"></td>
+            <td>
+                <a th:href="@{/checkout(billId=${bill.id})}" class="btn btn-info">Check Out</a>
+            </td>
         </tr>
         </tbody>
     </table>

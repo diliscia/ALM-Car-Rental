@@ -17,14 +17,13 @@
     <h2>List of Vehicles</h2>
     <hr/>
     <a th:href="@{/admin/addVehicleForm}" class="btn btn-primary mb-2">Add Vehicle</a>
-    <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <table class="table table-bordered table-striped" id="vehicle-table">
         <thead>
         <tr>
             <th>Image</th>
             <th>Model</th>
-<!--            <th>VIN</th>-->
+            <th>VIN</th>
             <th>Plate</th>
             <th>Year</th>
             <th>km/L</th>
@@ -41,7 +40,7 @@
                 <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
             </td>
             <td th:text="${vehicle.modelName}"></td>
-<!--            <td th:text="${vehicle.vin}"></td>-->
+            <td th:text="${vehicle.vin}"></td>
             <td th:text="${vehicle.plate}"></td>
             <td th:text="${vehicle.modelYear}"></td>
             <td th:text="${vehicle.mileage}"></td>

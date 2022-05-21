@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en" xmlns:sec="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Add Bill | ALM Car Rental </title>
+</head>
+
+<body class="grey lighten-4">
+<nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
+<nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
+<div class="container">
+    <h3 class="brand-text">Add Bill</h3>
+    <a th:href="@{/admin/bill-list}" class="btn btn-primary mb-2">Back to List of Bill</a>
+    </hr>
+    <form th:action="@{/admin/saveBill}" th:object="${bill}" method="POST">
+        <label class="col-sm-2 col-form-label">Bill Date</label>
+        <input type="date" class="form-control" th:field="*{bill_date}"><br>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('bill_date')}" th:errors="*{bill_date}">error</div>
+        <label class="col-sm-2 col-form-label">Due Date</label>
+        <input type="date" class="form-control" th:field="*{due_date}"><br>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('due_date')}" th:errors="*{due_date}">error</div>
+        <label class="col-sm-2 col-form-label">Amount</label>
+        <input type="number" class="form-control" min="10" th:field="*{amount}"><br>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">error</div>
+        <label class="col-sm-2 col-form-label">Late Fee</label>
+        <input type="number" class="form-control" min="0" th:field="*{late_fee}" ><br>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('late_fee')}" th:errors="*{late_fee}">error</div>
+        <div class="mb-3">
+            <label class="col-sm-2 col-form-label">Status</label><br>
+            <p class="form-check form-check-inline">
+                <label>
+                    <input class="form-check-input"  th:field="*{isPaid}" value ="NOT_PAID" name="group2" type="radio" checked/>
+                    <span>NOT PAID</span>
+                </label>
+            </p>
+            <p class="form-check form-check-inline">
+                <label>
+                    <input class="form-check-input" th:field="*{isPaid}" value = "PAID" name="group2" type="radio"  />
+                    <span>PAID</span>
+                </label>
+            </p>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('isPaid')}" th:errors="*{isPaid}">error</div>
+        </div>
+        <label class="col-sm-2 col-form-label">Rent Id</label>
+        <select th:field="*{rent}" required>
+            <th:block th:each="rent:${rents}">
+                <option th:text="${rent.id}" th:value="${rent.id}"></option>
+            </th:block>
+        </select>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('rent')}" th:errors="*{rent}">error</div>
+        <br>
+        <input class="btn btn-primary mb-2" type="submit" name="submit" value="Save">
+        <input type="hidden" th:field="*{id}" />
+    </form>
+</div>
+</body>
+
+</html>

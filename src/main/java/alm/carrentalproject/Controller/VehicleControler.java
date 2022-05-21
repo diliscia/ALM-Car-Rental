@@ -43,12 +43,12 @@ public class VehicleControler {
     @PostMapping("/admin/saveVehicle")
     public String saveVehicle(@Valid @ModelAttribute Vehicle vehicle, Errors errors, Model model, RedirectAttributes redirAttrs) {
         if (null != errors && errors.getErrorCount() > 0) {
-            return"/add-vehicle-form";
+            return "add-vehicle-form";
         } else {
             redirAttrs.addFlashAttribute("success", "Vehicle details saved successfully!!");
 //            model.addAttribute("success", "Vehicle details saved successfully!!");
             vehicleRepo.save(vehicle);
-            return"redirect:vehicles";
+            return "redirect:vehicles";
         }
     }
 
@@ -81,6 +81,5 @@ public class VehicleControler {
         Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
         return"redirect:/insurances";
     }
-
 
 }

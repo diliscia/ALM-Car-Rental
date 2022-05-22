@@ -58,7 +58,7 @@ public class BillingController {
         } else {
             redirAttrs.addFlashAttribute("success", "Bill details saved successfully!!");
             billingRepository.save(aBill);
-            return "redirect:bill_list";
+            return "redirect:/admin/bill-list";
         }
     }
 

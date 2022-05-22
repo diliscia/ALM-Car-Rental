@@ -19,7 +19,7 @@
   <h2 class="brand-text">New User registration</h2>
   <hr/>
   <form th:action="@{/registration}" th:object="${user}" method="POST">
-    <label class="col-sm-2 col-form-label" >Desired username</label>
+    <label class="col-sm-2 col-form-label" >Username</label>
     <input type="text" class="form-control"  th:field="*{username}" ><br>
     <div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">error</div>
     <label for="staticEmail" class="col-sm-2 col-form-label" >Your email</label>

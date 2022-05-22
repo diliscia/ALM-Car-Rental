@@ -41,23 +41,23 @@ public class BillingController {
     @GetMapping("/admin/addBillForm")
     public ModelAndView addBill() {
         ModelAndView mav = new ModelAndView("add-bill-form");
-        mav.addObject("bill",new Billing());
+        mav.addObject("aBill",new Billing());
         List<Rent> rents = rentRepository.findAll();
         mav.addObject("rents", rents);
         return mav;
     }
 
     @PostMapping("/admin/saveBill")
-    public String saveBill(@Valid @ModelAttribute Billing bill, BindingResult result, Model model, RedirectAttributes redirAttrs) {
-        if (bill.getDue_date() != null && bill.getBill_date().after(bill.getDue_date())) {
-            FieldError dueDate = new FieldError("bill", "due_date", "Due date must be after the bill date ");
+    public String saveBill(@Valid @ModelAttribute Billing aBill, BindingResult result, Model model, RedirectAttributes redirAttrs) {
+        if (aBill.getDue_date() != null && aBill.getBill_date().after(aBill.getDue_date())) {
+            FieldError dueDate = new FieldError("aBill", "due_date", "Due date must be after the bill date ");
             result.addError(dueDate);
         };
         if (result.hasErrors()) {
             return "add-bill-form";
         } else {
             redirAttrs.addFlashAttribute("success", "Bill details saved successfully!!");
-            billingRepository.save(bill);
+            billingRepository.save(aBill);
             return "redirect:bill_list";
         }
     }

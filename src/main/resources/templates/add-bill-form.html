@@ -19,7 +19,7 @@
     <h2 class="brand-text">Add Bill</h2>
     <hr/>
     <a th:href="@{/admin/bill-list}" class="btn btn-primary mb-2">Back to List of Bill</a>
-    <form th:action="@{/admin/saveBill}" th:object="${bill}" method="POST">
+    <form th:action="@{/admin/saveBill}" th:object="${aBill}" method="POST">
         <label class="col-sm-2 col-form-label">Bill Date</label>
         <input type="date" class="form-control" th:field="*{bill_date}"><br>
         <div class="alert alert-danger" th:if="${#fields.hasErrors('bill_date')}" th:errors="*{bill_date}">error</div>

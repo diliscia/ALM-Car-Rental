@@ -68,7 +68,7 @@ public class BillingController {
         Billing bill = billingRepository.findById(billId).get();
         List<Rent> rents = rentRepository.findAll();
         mav.addObject("rents", rents);
-        mav.addObject("bill", bill);
+        mav.addObject("aBill", bill);
         return mav;
     }
 

@@ -16,9 +16,9 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h3 class="brand-text">Add Bill</h3>
+    <h2 class="brand-text">Add Bill</h2>
+    <hr/>
     <a th:href="@{/admin/bill-list}" class="btn btn-primary mb-2">Back to List of Bill</a>
-    </hr>
     <form th:action="@{/admin/saveBill}" th:object="${bill}" method="POST">
         <label class="col-sm-2 col-form-label">Bill Date</label>
         <input type="date" class="form-control" th:field="*{bill_date}"><br>

@@ -16,9 +16,9 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h3 class="brand-text">Add Vehicle</h3>
+    <h2 class="brand-text">Add Vehicle</h2>
+    <hr/>
     <a th:href="@{/admin/vehicles}" class="btn btn-primary mb-2">Back to List of Vehicles</a>
-    </hr>
     <form th:action="@{/admin/saveVehicle}" th:object="${vehicle}" method="POST">
         <label class="col-sm-2 col-form-label">ImageURL</label>
         <input type="text" class="form-control" th:field="*{imageURL}" ><br>

@@ -14,7 +14,7 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h2>List of Vehicles</h2>
+    <h2>ALM Car Rental List of Vehicles</h2>
     <hr/>
     <a th:href="@{/admin/addVehicleForm}" class="btn btn-primary mb-2">Add Vehicle</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
@@ -23,7 +23,7 @@
         <tr>
             <th>Image</th>
             <th>Model</th>
-            <th>VIN</th>
+<!--            <th>VIN</th>-->
             <th>Plate</th>
             <th>Year</th>
             <th>km/L</th>
@@ -40,7 +40,7 @@
                 <img th:src="${vehicle.imageURL}" style="width:auto; display: block; margin:auto;">
             </td>
             <td th:text="${vehicle.modelName}"></td>
-            <td th:text="${vehicle.vin}"></td>
+<!--            <td th:text="${vehicle.vin}"></td>-->
             <td th:text="${vehicle.plate}"></td>
             <td th:text="${vehicle.modelYear}"></td>
             <td th:text="${vehicle.mileage}"></td>
@@ -63,7 +63,7 @@
             $("#vehicle-table").DataTable({
                 'aoColumnDefs': [{
                     'bSortable': false,
-                    'aTargets': [0,10],
+                    'aTargets': [-10,-1],
                     }]
             });
         })

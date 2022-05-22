@@ -17,7 +17,8 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h3 class="banner">Sign in</h3>
+    <h2 class="banner">Sign in</h2>
+    <hr/>
     <h4 class="alert alert-danger" th:if="${loginError}" >Invalid username or password</h4>
     <form method="POST" th:action="@{/login}">
         <label for="username">Username:

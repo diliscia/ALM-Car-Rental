@@ -16,7 +16,8 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-  <h3 class="brand-text">New User registration</h3>
+  <h2 class="brand-text">New User registration</h2>
+  <hr/>
   <form th:action="@{/registration}" th:object="${user}" method="POST">
     <label class="col-sm-2 col-form-label" >Desired username</label>
     <input type="text" class="form-control"  th:field="*{username}" ><br>

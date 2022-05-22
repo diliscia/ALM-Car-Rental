@@ -14,10 +14,10 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h2>List of Bills</h2>
+    <h2>ALM Car Rental List of Bills</h2>
+    <hr/>
     <a href="/admin/addBillForm" class="btn btn-primary mb-2">Add Bill</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
-    <hr/>
     <table class="table table-bordered table-striped" id="billing-table">
         <thead>
         <tr>

@@ -37,7 +37,6 @@
 
   <div class="" role="alert" th:text="${success}" th:if="${success}"></div>
   <h4 class="alert alert-danger" th:if="${loginError}" >Invalid username or password</h4>
-
   <hr/>
   <form th:action="@{/saveDateTime}" method="GET">
     <table class="table table-bordered" id="date-time-table">

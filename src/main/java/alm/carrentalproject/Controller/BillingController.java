@@ -56,7 +56,7 @@ public class BillingController {
         if (result.hasErrors()) {
             return "add-bill-form";
         } else {
-            redirAttrs.addFlashAttribute("success", "Bill saved successfully!!");
+            redirAttrs.addFlashAttribute("success", "Bill details saved successfully!!");
             billingRepository.save(bill);
             return "redirect:bill_list";
         }

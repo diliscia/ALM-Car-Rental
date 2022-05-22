@@ -109,9 +109,9 @@
 <script>
         $(document).ready(function() {
             $("#insurances-table").DataTable({
-                'aoColumnDef': [{
+                'aoColumnDefs': [{
                     'bSortable': false,
-                    'aTarget': [-1]
+                    'aTargets': [-1],
                     }]
             });
         })

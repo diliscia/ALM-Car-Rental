@@ -14,9 +14,8 @@
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
 <div class="container">
-    <h2>ALM car rental Statistics</h2>
+    <h2>ALM Car Rental Statistics</h2>
     <hr/>
-    <a th:href="@{/}" class="btn btn-primary mb-2">Back to Main Page</a>
     <div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
     <table class="table table-bordered table-striped" id="statistics-table">
         <thead>

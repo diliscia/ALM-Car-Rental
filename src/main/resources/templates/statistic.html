@@ -13,8 +13,11 @@
 <body>
 <nav class="white z-depth-0" sec:authorize="isAnonymous()" th:replace="fragment/header_anonymous :: header"></nav>
 <nav class="white z-depth-0" sec:authorize="isAuthenticated()" th:replace="fragment/header_auth :: header"></nav>
-
-<div id="container" style="height: 400px;">
+<div class="container">
+    <h2>ALM Car Rental Statistics</h2>
+    <hr/>
+    <div id="container" style="height: 400px;">
+    </div>
 </div>
 
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -39,7 +42,7 @@ function drawLineChart(date, number) {
             width: 500
         },
         title: {
-            text:'Number Of Bookings'
+            text:'Number Of Bookings per Day'
         },
         xAxis: {
             categories: date

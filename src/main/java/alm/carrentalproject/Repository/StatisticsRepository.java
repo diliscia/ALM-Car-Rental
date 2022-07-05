@@ -9,6 +9,6 @@ import java.util.List;
 public interface StatisticsRepository extends JpaRepository<Statistics, Long> {
 
     @Query(value = "SELECT id, date_format(r.pickup_date,'%Y-%m-%d') as 'date'  ,count(r.pickup_date) as 'number'  " +
-            " FROM rents r group by r.pickup_date",nativeQuery = true)
+            " FROM rents r group by r.pickup_date order by r.pickup_date",nativeQuery = true)
      List<Statistics> getAll();
 }
